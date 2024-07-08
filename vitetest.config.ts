@@ -1,10 +1,10 @@
-import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
 import path from 'path';
+import { defineConfig } from 'vite';
 
-// https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  define: {
+    'import.meta.env.VITE_APP': JSON.stringify(process.env.APP)
+  },
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
@@ -15,5 +15,13 @@ export default defineConfig({
       '@images': path.resolve(__dirname, './src/assets/images'),
       '@styles': path.resolve(__dirname, './src/assets/styles')
     }
+  },
+
+  test: {
+    root: './tests/unit',
+    globals: true,
+    environment: 'jsdom',
+    maxWorkers: 1,
+    minWorkers: 1
   }
 });

@@ -1,16 +1,10 @@
+/** @type {import('eslint').Linter.Config} */
 module.exports = {
   root: true,
   env: { browser: true, es2020: true },
-  extends: [
-    'airbnb',
-    'airbnb/hooks',
-    'airbnb-typescript',
-    'plugin:@typescript-eslint/recommended',
-    'plugin:@typescript-eslint/recommended-requiring-type-checking',
-    'prettier',
-  ],
+  extends: ['airbnb', 'airbnb/hooks', 'airbnb-typescript', 'plugin:@typescript-eslint/recommended', 'plugin:@typescript-eslint/recommended-requiring-type-checking', 'prettier', 'plugin:storybook/recommended'],
   parser: '@typescript-eslint/parser',
-  ignorePatterns: ['dist','node_modules/', '.eslintrc.cjs', '*.config.js', '*.config.ts', "vite.config.ts",],
+  ignorePatterns: ['dist','node_modules/', '.eslintrc.cjs', '*.config.js', '*.config.ts', "vite.config.ts",'coverage'],
   overrides: [
     {
       files: ['*.ts', '*.tsx'],
