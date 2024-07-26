@@ -9,7 +9,7 @@ const buttonProps = {
   children: 'Some Text'
 } satisfies ButtonProps;
 
-describe('UI / Button', () => {
+describe('UI /Button', () => {
   test('should display button', () => {
     render(<Button {...buttonProps} />);
 
