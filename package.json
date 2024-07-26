@@ -28,7 +28,7 @@
     "zod": "^3.23.8"
   },
   "lint-staged": {
-    "**/*.{js,jsx,ts,tsx}": [
+    "./src/**/*.{js,jsx,ts,tsx}": [
       "yarn format",
       "yarn lint --fix"
     ]
