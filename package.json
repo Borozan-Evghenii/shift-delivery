@@ -16,10 +16,15 @@
     "coverage": "vitest run --coverage"
   },
   "dependencies": {
+    "@radix-ui/react-slot": "^1.1.0",
+    "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
+    "cva": "^0.0.0",
+    "jsdom": "^24.1.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-icons": "^5.2.1",
+    "tailwind-merge": "^2.4.0",
     "zod": "^3.23.8"
   },
   "lint-staged": {
@@ -38,6 +43,8 @@
     "@storybook/react": "^8.2.2",
     "@storybook/react-vite": "^8.2.2",
     "@storybook/test": "^8.2.2",
+    "@testing-library/dom": "^10.4.0",
+    "@testing-library/react": "^16.0.0",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@typescript-eslint/eslint-plugin": "^7.0.0",

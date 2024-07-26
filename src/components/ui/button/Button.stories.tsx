@@ -1,32 +1,58 @@
-import type { Meta } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
+import '@/assets/styles/global.css';
 
-import { Button } from './Button.tsx';
+import { Button } from './Button';
 
-const meta = {
-  title: 'Design System / UI KIT / Button',
+const meta: Meta<typeof Button> = {
+  title: 'Components / UI / Buttons',
   component: Button,
-  parameters: {
-    layout: 'centered'
-  },
-  tags: ['autodocs']
-} satisfies Meta<typeof Button>;
-
-export default meta;
-// type Story = StoryObj<typeof meta>;
-
-const Template = (args) => <Button {...args} />;
-
-export const Primary = Template.bind({});
-export const Secondary = Template.bind({});
-
-Primary.args = {
-  buttonType: 'primary',
-  variant: 'contained',
-  children: 'Button'
+  args: {
+    children: 'Button'
+  }
 };
 
-Secondary.args = {
-  buttonType: 'secondary',
-  variant: 'outlined',
-  children: 'Button'
+export default meta;
+type Story = StoryObj<typeof Button>;
+export const PrimaryContained: Story = {
+  args: {
+    colour: 'primary',
+    variant: 'contained'
+  }
+};
+export const PrimaryText: Story = {
+  args: {
+    colour: 'primary',
+    variant: 'text'
+  }
+};
+export const PrimaryLink: Story = {
+  args: {
+    colour: 'primary',
+    variant: 'link'
+  }
+};
+
+export const SecondaryOutline: Story = {
+  args: {
+    colour: 'secondary',
+    variant: 'outline'
+  }
+};
+export const SecondaryText: Story = {
+  args: {
+    colour: 'secondary',
+    variant: 'text'
+  }
+};
+export const SecondaryLink: Story = {
+  args: {
+    colour: 'secondary',
+    variant: 'link'
+  }
+};
+export const TertiaryLink: Story = {
+  args: {
+    colour: 'tertiary',
+    variant: 'link'
+  }
 };
