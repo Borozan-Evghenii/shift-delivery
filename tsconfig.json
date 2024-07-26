@@ -29,7 +29,7 @@
       "@contexts/*": ["./src/utils/contexts/*"],
       "@components/*": ["./src/components/*"],
       "@images/*": ["./src/assets/images/*"],
-      "@styles/*": ["./src/assets/styles/*"],
+      "@styles/*": ["./src/assets/styles/*"]
     }
   },
   "include": ["**/*.ts", "**/*.tsx"],

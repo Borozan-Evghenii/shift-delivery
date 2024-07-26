@@ -2,4 +2,34 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --white: #fff;
+  --brand: #1975ff;
+  --brand-light: #cce0ff;
+  --brand-hover: #0052cc;
+  --brand-disabled: #cce0ff;
 
+  /*bg*/
+  --bg-brand: #1975ff;
+  --bg-tertiary: #f9fafb;
+  --bg-hover-primary: #0052cc;
+  --bg-brand-extra-light: #cce0ff;
+  --bg-primary: #fff;
+  --bg-brand-primary: #f0f6ff;
+
+  /*indicator*/
+  --focused-alternative: #cce0ff;
+
+  /*border*/
+  --border-light: #ced2da;
+  --border-extra-light: #e3e5e5;
+
+  /*text*/
+  --text-brand: #1975ff;
+  --text-secondary: #344051;
+  --text-invert: #fff;
+  --text-tertiary: #344051;
+  --text-primary: #141c24;
+  --text-quartenery: #97a1af;
+  --text-brand-disabled: #0052cc;
+}
