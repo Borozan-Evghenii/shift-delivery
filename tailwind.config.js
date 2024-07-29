@@ -14,6 +14,9 @@ export default {
       'home-texture': "url('/images/home-texture.jpg')"
     },
     extend: {
+      borderRadius: {
+        14: '0.875rem'
+      },
       colors: {
         primary: {
           50: '#f9fafb',
