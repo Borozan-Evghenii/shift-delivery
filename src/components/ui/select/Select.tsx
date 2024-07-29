@@ -21,7 +21,7 @@ const SelectTrigger = React.forwardRef<
       'focus:outline-none',
       'disabled:bg-disabled',
       'data-[state=open]:border-indicator-light data-[state=open]:bg-secondary',
-      '[&>span]: line-clamp-1',
+      '[&>span]:line-clamp-1',
       className
     )}
   >
