@@ -1,3 +1,3 @@
-export * from './users';
+export * from './user';
 export * from './delivery';
 export * from './otps';
