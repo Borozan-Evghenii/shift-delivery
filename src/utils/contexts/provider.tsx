@@ -1,4 +1,4 @@
-import { QueryProvider } from './query/queryClientProvider';
+import { QueryProvider } from './query/QueryProvider';
 
 interface ProviderProps {
   children: React.ReactNode;

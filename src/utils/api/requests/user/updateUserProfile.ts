@@ -1,8 +1,8 @@
-import type { AxiosRequestConfig } from '../../../../../@types/api';
+import type { RequestConfig } from '../../../../../@types/api';
 import type { UpdateProfileDto, UpdateProfileResponse } from '../../../../../@types/models';
 import { api } from '../../instance';
 
-type UpdateUserProfile = AxiosRequestConfig<UpdateProfileDto>;
+export type UpdateUserProfile = RequestConfig<UpdateProfileDto>;
 
 export const updateUserPropfile = async ({ params, config }: UpdateUserProfile) =>
   api.patch<UpdateProfileResponse>('/', params, config);
