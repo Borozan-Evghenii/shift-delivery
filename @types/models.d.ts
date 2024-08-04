@@ -71,7 +71,7 @@ type DeliveryOrderResponse = {
 } & BaseResponse;
 
 type DeliveryPointsResponse = {
-  points: DeliveryPoint;
+  points: DeliveryPoint[];
 } & BaseResponse;
 
 type DeliveryPoint = {
@@ -86,7 +86,7 @@ type CancelDeliveryOrderDto = {
 };
 
 type DeliveryPackageTypesResponse = {
-  packages: DeliveryPackageTypes;
+  packages: DeliveryPackageTypes[];
 } & BaseResponse;
 
 type DeliveryPackageTypes = {
