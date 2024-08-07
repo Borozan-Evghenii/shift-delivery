@@ -2,6 +2,9 @@
 export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
+    backgroundImage: {
+      'hero-pattern': "url('./src/assets/images/homePageBackground.jpg')"
+    },
     container: {
       center: true,
       screens: {

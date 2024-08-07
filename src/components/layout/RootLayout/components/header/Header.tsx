@@ -21,7 +21,11 @@ export const Header = () => (
                 colour='secondary'
                 variant='link'
               >
-                <Link className='flex gap-2' to={ROUTE.PROFILE}>
+                <Link
+                  activeProps={{ className: 'text-primary' }}
+                  className='flex gap-2'
+                  to={ROUTE.PROFILE}
+                >
                   <IconUser />
                   <span>Profile</span>
                 </Link>
@@ -35,7 +39,11 @@ export const Header = () => (
                 colour='secondary'
                 variant='link'
               >
-                <Link className='flex gap-2' to={ROUTE.HISTORY}>
+                <Link
+                  activeProps={{ className: 'text-primary' }}
+                  className='flex gap-2'
+                  to={ROUTE.HISTORY}
+                >
                   <IconHistory />
                   <span>History</span>
                 </Link>
@@ -51,7 +59,7 @@ export const Header = () => (
         colour='secondary'
         variant='link'
       >
-        <Link className='flex gap-2' to={ROUTE.INDEX}>
+        <Link activeProps={{ className: 'text-primary' }} className='flex gap-2' to={ROUTE.INDEX}>
           <IconExit />
           <span>Exit</span>
         </Link>
