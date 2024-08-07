@@ -1,35 +1,17 @@
-import { IconExit, IconHistory, IconUser } from './components/icons/svg';
-import { Header } from './components/layout';
-import { Select } from './components/ui/select/Select';
-import { useGetDeliveryPoints } from './utils/api/hooks/delivery/useGetDeliveryPointsQuery';
+import { createRouter, RouterProvider } from '@tanstack/react-router';
 
-export const App = () => {
-  const { data } = useGetDeliveryPoints();
+import { routeTree } from './routeTree.gen';
 
-  return (
-    <>
-      <Header />
-      <div className='flex h-[100vh] flex-col items-center justify-center gap-3'>
-        <IconUser />
-        <IconHistory />
-        <IconExit />
+const router = createRouter({
+  routeTree,
+  context: {
+    isAuthenticated: false
+  }
+});
+declare module '@tanstack/react-router' {
+  interface Register {
+    router: typeof router;
+  }
+}
 
-        <div className='w-[500px]'>
-          <Select.Root>
-            <Select.Label>Select category</Select.Label>
-            <Select.Trigger>
-              <Select.Value placeholder='Select a fruit' />
-            </Select.Trigger>
-            <Select.Content>
-              {data?.data?.points.map((point) => (
-                <Select.Item key={point.latitude} value={point.id}>
-                  {point.name}
-                </Select.Item>
-              ))}
-            </Select.Content>
-          </Select.Root>
-        </div>
-      </div>
-    </>
-  );
-};
+export const App = () => <RouterProvider context={{ isAuthenticated: false }} router={router} />;
