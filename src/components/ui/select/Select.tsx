@@ -6,6 +6,7 @@ import { cn } from '@/utils/helper/clasnames';
 
 const SelectRoot = SelectPrimitive.Root;
 const SelectGroup = SelectPrimitive.Group;
+const SelectSeparator = SelectPrimitive.Separator;
 const SelectValue = SelectPrimitive.Value;
 
 const SelectTrigger = React.forwardRef<
@@ -84,6 +85,7 @@ const SelectLabel = ({ children, ...props }: React.ComponentProps<'span'>) => (
 );
 
 export const Select = {
+  Separator: SelectSeparator,
   Root: SelectRoot,
   Group: SelectGroup,
   Value: SelectValue,
