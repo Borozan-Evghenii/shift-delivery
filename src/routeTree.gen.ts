@@ -21,22 +21,22 @@ import { Route as IndexImport } from './routes/index';
 const ProfileRoute = ProfileImport.update({
   path: '/profile',
   getParentRoute: () => rootRoute
-} as any);
+} as any).lazy(() => import('./routes/profile.lazy').then((d) => d.Route));
 
 const HistoryRoute = HistoryImport.update({
   path: '/history',
   getParentRoute: () => rootRoute
-} as any);
+} as any).lazy(() => import('./routes/history.lazy').then((d) => d.Route));
 
 const AuthRoute = AuthImport.update({
   path: '/auth',
   getParentRoute: () => rootRoute
-} as any);
+} as any).lazy(() => import('./routes/auth.lazy').then((d) => d.Route));
 
 const IndexRoute = IndexImport.update({
   path: '/',
   getParentRoute: () => rootRoute
-} as any);
+} as any).lazy(() => import('./routes/index.lazy').then((d) => d.Route));
 
 // Populate the FileRoutesByPath interface
 
