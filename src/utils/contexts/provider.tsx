@@ -1,14 +1,14 @@
+import type { QueryProviderProps } from './query/QueryProvider';
 import { QueryProvider } from './query/QueryProvider';
-import type { UserContextProps } from './user';
-import { UserProvider } from './user';
+import { AuthProvider } from './session';
 
-interface ProviderProps {
+export interface ProvidersProps {
   children: React.ReactNode;
-  user: Omit<UserContextProps, 'children'>;
+  query: Omit<QueryProviderProps, 'children'>;
 }
 
-export const Provider = ({ children, user }: ProviderProps) => (
-  <UserProvider {...user}>
-    <QueryProvider>{children}</QueryProvider>
-  </UserProvider>
+export const Provider = ({ children, query }: ProvidersProps) => (
+  <AuthProvider>
+    <QueryProvider {...query}>{children}</QueryProvider>
+  </AuthProvider>
 );

@@ -1,12 +1,22 @@
+import { QueryClient } from '@tanstack/react-query';
+import { StrictMode } from 'react';
 import ReactDOM from 'react-dom/client';
 
 import './assets/styles/global.css';
 import { App } from './App';
+import type { ProvidersProps } from './utils/contexts/provider';
 import { Provider } from './utils/contexts/provider';
-import type { UserContextProps } from './utils/contexts/user';
+
+const queryClient = new QueryClient();
+
+const providerProps: Omit<ProvidersProps, 'children'> = {
+  query: { client: queryClient }
+};
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  <Provider user={{} as UserContextProps}>
-    <App />
-  </Provider>
+  <StrictMode>
+    <Provider {...providerProps}>
+      <App />
+    </Provider>
+  </StrictMode>
 );
