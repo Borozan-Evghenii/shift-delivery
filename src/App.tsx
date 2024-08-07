@@ -1,7 +1,8 @@
 import { createRouter, RouterProvider } from '@tanstack/react-router';
 
+import { useAuthContext } from '@/utils/contexts/session';
+
 import { routeTree } from './routeTree.gen';
-import { useUser } from './utils/contexts/user';
 
 const router = createRouter({
   routeTree,
@@ -16,7 +17,7 @@ declare module '@tanstack/react-router' {
 }
 
 export const App = () => {
-  const user = useUser();
+  const { isAuth } = useAuthContext();
 
-  return <RouterProvider context={{ isAuthenticated: !user }} router={router} />;
+  return <RouterProvider context={{ isAuthenticated: isAuth }} router={router} />;
 };
