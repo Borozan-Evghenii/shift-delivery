@@ -1,8 +1,13 @@
-import { createFileRoute } from '@tanstack/react-router';
+import { createFileRoute, redirect } from '@tanstack/react-router';
 
-import { ProfilePage } from '@/pages/profile';
 import { ROUTE } from '@/utils/constants';
 
 export const Route = createFileRoute(ROUTE.PROFILE)({
-  component: () => <ProfilePage />
+  beforeLoad: ({ context }) => {
+    if (!context.isAuthenticated) {
+      throw redirect({
+        to: ROUTE.INDEX
+      });
+    }
+  }
 });
