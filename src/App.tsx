@@ -6,7 +6,7 @@ import { useUser } from './utils/contexts/user';
 const router = createRouter({
   routeTree,
   context: {
-    isAuthenticated: false
+    isAuthenticated: true
   }
 });
 declare module '@tanstack/react-router' {
@@ -17,5 +17,6 @@ declare module '@tanstack/react-router' {
 
 export const App = () => {
   const user = useUser();
+
   return <RouterProvider context={{ isAuthenticated: !user }} router={router} />;
 };
