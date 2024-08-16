@@ -11,7 +11,7 @@ export const Header = () => {
   const location = useLocation();
 
   return (
-    <header className='border-border-light w-full border-b-2 bg-primary py-6'>
+    <header className='border-border-light fixed left-0 right-0 w-full border-b-2 bg-primary py-6'>
       <div className='container flex items-center justify-between'>
         <div className='flex items-center gap-8'>
           <Link to='/'>

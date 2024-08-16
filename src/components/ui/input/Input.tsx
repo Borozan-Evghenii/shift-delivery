@@ -16,11 +16,11 @@ export const INPUT_TEST_ID = {
 };
 
 export const Input = React.forwardRef<HTMLInputElement, InputProps>(
-  ({ label, error, helpText, type, className, ...props }: InputProps, ref) => {
+  ({ label, error, helpText, type = 'text', className, ...props }: InputProps, ref) => {
     const id = React.useId();
 
     return (
-      <div className='flex w-full flex-col' data-testid={INPUT_TEST_ID.CONTAINER}>
+      <div className='flex flex-col' data-testid={INPUT_TEST_ID.CONTAINER}>
         {label && (
           <label className='mb-1.5 text-sm' data-testid={INPUT_TEST_ID.LABEL} htmlFor={id}>
             {label}
@@ -29,6 +29,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
         <input
           ref={ref}
           data-testid={INPUT_TEST_ID.INPUT}
+          type={type}
           {...props}
           id={id}
           className={cn([
