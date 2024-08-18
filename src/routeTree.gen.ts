@@ -16,13 +16,18 @@ import { Route as rootRoute } from './routes/__root';
 import { Route as ProfileImport } from './routes/profile';
 import { Route as OrderImport } from './routes/order';
 import { Route as HistoryImport } from './routes/history';
-import { Route as AuthImport } from './routes/auth';
 
 // Create Virtual Routes
 
+const AuthLazyImport = createFileRoute('/auth')();
 const IndexLazyImport = createFileRoute('/')();
 
 // Create/Update Routes
+
+const AuthLazyRoute = AuthLazyImport.update({
+  path: '/auth',
+  getParentRoute: () => rootRoute
+} as any).lazy(() => import('./routes/auth.lazy').then((d) => d.Route));
 
 const ProfileRoute = ProfileImport.update({
   path: '/profile',
@@ -39,11 +44,6 @@ const HistoryRoute = HistoryImport.update({
   getParentRoute: () => rootRoute
 } as any).lazy(() => import('./routes/history.lazy').then((d) => d.Route));
 
-const AuthRoute = AuthImport.update({
-  path: '/auth',
-  getParentRoute: () => rootRoute
-} as any).lazy(() => import('./routes/auth.lazy').then((d) => d.Route));
-
 const IndexLazyRoute = IndexLazyImport.update({
   path: '/',
   getParentRoute: () => rootRoute
@@ -58,13 +58,6 @@ declare module '@tanstack/react-router' {
       path: '/';
       fullPath: '/';
       preLoaderRoute: typeof IndexLazyImport;
-      parentRoute: typeof rootRoute;
-    };
-    '/auth': {
-      id: '/auth';
-      path: '/auth';
-      fullPath: '/auth';
-      preLoaderRoute: typeof AuthImport;
       parentRoute: typeof rootRoute;
     };
     '/history': {
@@ -88,6 +81,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProfileImport;
       parentRoute: typeof rootRoute;
     };
+    '/auth': {
+      id: '/auth';
+      path: '/auth';
+      fullPath: '/auth';
+      preLoaderRoute: typeof AuthLazyImport;
+      parentRoute: typeof rootRoute;
+    };
   }
 }
 
@@ -95,10 +95,10 @@ declare module '@tanstack/react-router' {
 
 export const routeTree = rootRoute.addChildren({
   IndexLazyRoute,
-  AuthRoute,
   HistoryRoute,
   OrderRoute,
-  ProfileRoute
+  ProfileRoute,
+  AuthLazyRoute
 });
 
 /* prettier-ignore-end */
@@ -110,17 +110,14 @@ export const routeTree = rootRoute.addChildren({
       "filePath": "__root.tsx",
       "children": [
         "/",
-        "/auth",
         "/history",
         "/order",
-        "/profile"
+        "/profile",
+        "/auth"
       ]
     },
     "/": {
       "filePath": "index.lazy.tsx"
-    },
-    "/auth": {
-      "filePath": "auth.tsx"
     },
     "/history": {
       "filePath": "history.tsx"
@@ -130,6 +127,9 @@ export const routeTree = rootRoute.addChildren({
     },
     "/profile": {
       "filePath": "profile.tsx"
+    },
+    "/auth": {
+      "filePath": "auth.lazy.tsx"
     }
   }
 }
