@@ -44,7 +44,7 @@ export const Header = () => {
             </nav>
           )}
         </div>
-        {!isAuth && (
+        {!isAuth ? (
           <Link
             activeProps={{ className: 'text-brand' }}
             className='paragraph-16-medium flex gap-2 text-secondary hover:text-brand'
@@ -53,8 +53,7 @@ export const Header = () => {
             <IconExit />
             <span>Войти</span>
           </Link>
-        )}
-        {isAuth && (
+        ) : (
           <Link
             activeProps={{ className: 'text-brand' }}
             className='paragraph-16-medium flex gap-2 text-secondary hover:text-brand'
