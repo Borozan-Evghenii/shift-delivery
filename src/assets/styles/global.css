@@ -33,3 +33,59 @@
   --text-quartenery: #97a1af;
   --text-brand-disabled: #0052cc;
 }
+
+.title-h1 {
+  @apply text-[32px] font-bold leading-[36px];
+}
+
+.title-h2 {
+  @apply text-2xl font-bold leading-8;
+}
+
+.title-h3 {
+  @apply text-xl font-semibold leading-[24px];
+}
+
+.button-medium {
+  @apply text-base font-medium leading-6;
+}
+
+.button-semibold {
+  @apply text-base font-semibold leading-6;
+}
+
+.paragraph-16 {
+  @apply text-base leading-6;
+}
+
+.paragraph-16-medium {
+  @apply text-base font-medium leading-6;
+}
+
+.paragraph-16-underline {
+  @apply text-base leading-6 underline;
+}
+
+.paragraph-14 {
+  @apply text-sm leading-5;
+}
+
+.paragraph-14-medium {
+  @apply text-sm font-medium leading-5;
+}
+
+.paragraph-14-underline {
+  @apply text-sm leading-5 underline;
+}
+
+.paragraph-12 {
+  @apply text-xs leading-5;
+}
+
+.paragraph-12-medium {
+  @apply text-xs font-medium leading-5;
+}
+
+.paragraph-12-underline {
+  @apply text-xs leading-5 underline;
+}
