@@ -79,8 +79,8 @@ const SelectItem = React.forwardRef<
   </SelectPrimitive.Item>
 ));
 
-const SelectLabel = ({ children, ...props }: React.ComponentProps<'span'>) => (
-  <span className={cn('w-full text-sm text-secondary')} {...props}>
+const SelectLabel = ({ children, className, ...props }: React.ComponentProps<'span'>) => (
+  <span className={cn('paragraph-14-medium text-secondary', className)} {...props}>
     {children}
   </span>
 );
