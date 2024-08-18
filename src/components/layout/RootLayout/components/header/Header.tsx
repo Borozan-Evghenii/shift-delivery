@@ -22,7 +22,7 @@ export const Header = () => {
                 <li>
                   <Link
                     activeProps={{ className: 'text-brand' }}
-                    className='paragraph-16-medium flex gap-2 text-secondary'
+                    className='paragraph-16-medium flex gap-2 text-secondary hover:text-brand'
                     to={ROUTE.PROFILE}
                   >
                     <IconUser />
@@ -33,7 +33,7 @@ export const Header = () => {
                 <li>
                   <Link
                     activeProps={{ className: 'text-brand' }}
-                    className='paragraph-16-medium flex gap-2 text-secondary'
+                    className='paragraph-16-medium flex gap-2 text-secondary hover:text-brand'
                     to={ROUTE.HISTORY}
                   >
                     <IconHistory />
@@ -47,7 +47,7 @@ export const Header = () => {
         {!isAuth && (
           <Link
             activeProps={{ className: 'text-brand' }}
-            className='paragraph-16-medium flex gap-2 text-secondary'
+            className='paragraph-16-medium flex gap-2 text-secondary hover:text-brand'
             to={ROUTE.AUTH}
           >
             <IconExit />
@@ -57,7 +57,7 @@ export const Header = () => {
         {isAuth && (
           <Link
             activeProps={{ className: 'text-brand' }}
-            className='paragraph-16-medium flex gap-2 text-secondary'
+            className='paragraph-16-medium flex gap-2 text-secondary hover:text-brand'
             to={ROUTE.INDEX}
           >
             <IconExit />
