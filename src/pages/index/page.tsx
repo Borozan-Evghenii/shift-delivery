@@ -1,5 +1,5 @@
 import { IconLocation, IconNavigate, IconPackage } from '@/components/icons/svg';
-import { Button, Input, Select, Tab } from '@/components/ui';
+import { Button, Input, Select, Tab, Typography } from '@/components/ui';
 
 import airplane from '../../assets/images/airplane.png';
 
@@ -14,7 +14,9 @@ export const IndexPage = () => {
       <div className='container grid h-full grid-cols-2 items-center gap-5'>
         <div className='flex h-[100%] flex-col justify-center gap-12'>
           <img alt='airplane' src={airplane} />
-          <p className='text-center text-3xl text-white'>ЦФТ доставка - быстро, удобно, надежно!</p>
+          <Typography className='text-center text-white' variant='title-h1'>
+            ЦФТ доставка - быстро, удобно, надежно!
+          </Typography>
         </div>
         <div className='justify-cente flex w-full items-center'>
           <form
@@ -22,7 +24,9 @@ export const IndexPage = () => {
             onSubmit={form.calculateForm.handleSubmit(functions.onSubmit)}
           >
             <div>
-              <p className='text- text-2xl font-bold'>Рассчитать доставку</p>
+              <Typography className='text-primary' variant='title-h2'>
+                Рассчитать доставку
+              </Typography>
             </div>
 
             <div className='flex flex-col gap-1'>
@@ -37,7 +41,7 @@ export const IndexPage = () => {
                 <Select.Content>
                   {state.deliveryPoints.data?.data.points.map((point) => (
                     <Select.Item key={point.id} value={point.id}>
-                      {point.name}
+                      <Typography variant='paragraph-16'>{point.name}</Typography>
                     </Select.Item>
                   ))}
                 </Select.Content>
@@ -62,7 +66,7 @@ export const IndexPage = () => {
                 <Select.Content>
                   {state.deliveryPoints.data?.data.points.map((point) => (
                     <Select.Item key={point.id} value={point.id}>
-                      {point.name}
+                      <Typography variant='paragraph-16'>{point.name}</Typography>
                     </Select.Item>
                   ))}
                 </Select.Content>
@@ -85,20 +89,24 @@ export const IndexPage = () => {
                 <Select.Content>
                   <Tab.Root defaultValue={TAB.APROXIMATE}>
                     <Tab.List>
-                      <Tab.Trigger value='aproximate'>Примерные</Tab.Trigger>
-                      <Tab.Trigger value='custom'>Точные</Tab.Trigger>
+                      <Tab.Trigger value='aproximate'>
+                        <Typography variant='paragraph-14'>Примерные</Typography>
+                      </Tab.Trigger>
+                      <Tab.Trigger value='custom'>
+                        <Typography variant='paragraph-14'>Точные</Typography>
+                      </Tab.Trigger>
                     </Tab.List>
                     <Tab.Content value={TAB.APROXIMATE}>
                       {state.packageType.data?.data.packages.map((pack) => (
                         <Select.Item key={pack.id} value={pack.id}>
-                          {`${pack.name}, ${pack.height} cm x ${pack.weight} cm x ${pack.length} cm `}
+                          <Typography variant='paragraph-16'>{`${pack.name}, ${pack.height} cm x ${pack.weight} cm x ${pack.length} cm `}</Typography>
                         </Select.Item>
                       ))}
                     </Tab.Content>
                     <Tab.Content value={TAB.CUSTOM}>
                       <div className='flex flex-col gap-2 py-2'>
                         <div className='flex items-center justify-between gap-2'>
-                          <p>Длина</p>
+                          <Typography variant='paragraph-16'>Длина</Typography>
                           <Input
                             placeholder='cm'
                             type='number'
@@ -108,7 +116,7 @@ export const IndexPage = () => {
                           />
                         </div>
                         <div className='flex items-center justify-between gap-2'>
-                          <p>Ширина</p>
+                          <Typography variant='paragraph-16'>Ширина</Typography>
                           <Input
                             placeholder='cm'
                             type='number'
@@ -118,7 +126,7 @@ export const IndexPage = () => {
                           />
                         </div>
                         <div className='flex items-center justify-between gap-2'>
-                          <p>Высота</p>
+                          <Typography variant='paragraph-16'>Высота</Typography>
                           <Input
                             placeholder='cm'
                             type='number'
@@ -128,7 +136,7 @@ export const IndexPage = () => {
                           />
                         </div>
                         <div className='flex items-center justify-between gap-2'>
-                          <p>Вес</p>
+                          <Typography variant='paragraph-16'>Вес</Typography>
                           <Input
                             placeholder='кг'
                             type='number'

@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { cn } from '@/utils/helper/clasnames';
+
 export type TypographyTag = 'p' | 'span' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'div';
 export type TypographyVariants =
   | 'paragraph-12'
@@ -35,7 +37,7 @@ export const Typography = <T extends TypographyTag>({
   className,
   ...props
 }: TypographyProps<T>) => (
-  <Tag className={`${variant} ${className}`} {...props} data-testid={TYPOGRAPHY_TEST_IDS.ITEM}>
+  <Tag className={cn(variant, className)} {...props} data-testid={TYPOGRAPHY_TEST_IDS.ITEM}>
     <span data-testid={TYPOGRAPHY_TEST_IDS.CHILDREN}>{children}</span>
   </Tag>
 );

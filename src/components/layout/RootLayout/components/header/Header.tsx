@@ -2,7 +2,6 @@ import { Link, useLocation } from '@tanstack/react-router';
 
 import Logo from '@/assets/images/Logo.png';
 import { IconExit, IconHistory, IconUser } from '@/components/icons/svg';
-import { Button } from '@/components/ui';
 import { ROUTE } from '@/utils/constants';
 import { useAuthContext } from '@/utils/contexts/session';
 
@@ -21,69 +20,49 @@ export const Header = () => {
             <nav>
               <ul className='flex items-center gap-8'>
                 <li>
-                  <Button
-                    asChild
-                    className='font-mediu flex gap-2 p-1 text-base no-underline'
-                    colour='secondary'
-                    variant='link'
+                  <Link
+                    activeProps={{ className: 'text-brand' }}
+                    className='paragraph-16-medium flex gap-2 text-secondary'
+                    to={ROUTE.PROFILE}
                   >
-                    <Link
-                      activeProps={{ className: 'text-brand' }}
-                      className='flex gap-2'
-                      to={ROUTE.PROFILE}
-                    >
-                      <IconUser />
-                      <span>Профиль</span>
-                    </Link>
-                  </Button>
+                    <IconUser />
+                    <span>Профиль</span>
+                  </Link>
                 </li>
 
                 <li>
-                  <Button
-                    asChild
-                    className='font-mediu flex gap-2 p-1 text-base no-underline'
-                    colour='secondary'
-                    variant='link'
+                  <Link
+                    activeProps={{ className: 'text-brand' }}
+                    className='paragraph-16-medium flex gap-2 text-secondary'
+                    to={ROUTE.HISTORY}
                   >
-                    <Link
-                      activeProps={{ className: 'text-brand' }}
-                      className='flex gap-2'
-                      to={ROUTE.HISTORY}
-                    >
-                      <IconHistory />
-                      <span>История</span>
-                    </Link>
-                  </Button>
+                    <IconHistory />
+                    <span>История</span>
+                  </Link>
                 </li>
               </ul>
             </nav>
           )}
         </div>
         {!isAuth && (
-          <Button
-            asChild
-            className='font-mediu flex gap-2 p-1 text-base no-underline'
-            colour='secondary'
-            variant='link'
+          <Link
+            activeProps={{ className: 'text-brand' }}
+            className='paragraph-16-medium flex gap-2 text-secondary'
+            to={ROUTE.AUTH}
           >
-            <Link activeProps={{ className: 'text-brand' }} className='flex gap-2' to={ROUTE.AUTH}>
-              <IconExit />
-              <span>Войти</span>
-            </Link>
-          </Button>
+            <IconExit />
+            <span>Войти</span>
+          </Link>
         )}
         {isAuth && (
-          <Button
-            asChild
-            className='font-mediu flex gap-2 p-1 text-base no-underline'
-            colour='secondary'
-            variant='link'
+          <Link
+            activeProps={{ className: 'text-brand' }}
+            className='paragraph-16-medium flex gap-2 text-secondary'
+            to={ROUTE.INDEX}
           >
-            <Link activeProps={{ className: 'text-brand' }} className='flex gap-2' to={ROUTE.INDEX}>
-              <IconExit />
-              <span>Выйти</span>
-            </Link>
-          </Button>
+            <IconExit />
+            <span>Выйти</span>
+          </Link>
         )}
       </div>
     </header>
