@@ -3,7 +3,7 @@ export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     backgroundImage: {
-      'hero-pattern': "url('./src/assets/images/homePageBackground.jpg')"
+      hero: "url('./src/assets/images/homePageBackground.jpg')"
     },
     container: {
       center: true,
@@ -12,9 +12,6 @@ export default {
         md: '768px',
         lg: '960px'
       }
-    },
-    backgroundImage: {
-      'home-texture': "url('/images/home-texture.jpg')"
     },
     extend: {
       borderRadius: {

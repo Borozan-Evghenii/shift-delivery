@@ -38,6 +38,7 @@ module.exports = {
   plugins: ['react-refresh'],
   rules: {
     'no-throw-literal': 0,
+    '@typescript-eslint/no-misused-promises': 0,
     '@typescript-eslint/no-throw-literal': 0,
     '@typescript-eslint/no-shadow': 0,
     '@typescript-eslint/consistent-type-imports': [

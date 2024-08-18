@@ -8,6 +8,7 @@ const SelectRoot = SelectPrimitive.Root;
 const SelectGroup = SelectPrimitive.Group;
 const SelectSeparator = SelectPrimitive.Separator;
 const SelectValue = SelectPrimitive.Value;
+const SelectIcon = SelectPrimitive.Icon;
 
 const SelectTrigger = React.forwardRef<
   React.ElementRef<typeof SelectPrimitive.Trigger>,
@@ -22,7 +23,7 @@ const SelectTrigger = React.forwardRef<
       'focus:outline-none',
       'disabled:bg-disabled',
       'data-[state=open]:border-indicator-light data-[state=open]:bg-secondary',
-      '[&>span]:line-clamp-1',
+      '[&>span:nth-child(2)]:ml-2 [&>span:nth-child(2)]:w-full [&>span:nth-child(2)]:text-left',
       className
     )}
   >
@@ -92,5 +93,6 @@ export const Select = {
   Trigger: SelectTrigger,
   Content: SelectContent,
   Item: SelectItem,
+  Icon: SelectIcon,
   Label: SelectLabel
 };
