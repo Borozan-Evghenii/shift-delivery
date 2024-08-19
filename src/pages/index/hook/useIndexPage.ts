@@ -37,10 +37,10 @@ export const useIndexPage = () => {
     );
 
     calculateForm.setValue(fieldName, {
-      width: pack![0].width.toString(),
-      weight: pack![0].weight.toString(),
-      height: pack![0].height.toString(),
-      length: pack![0].length.toString()
+      width: pack![0].width,
+      weight: pack![0].weight,
+      height: pack![0].height,
+      length: pack![0].length
     });
   };
 
