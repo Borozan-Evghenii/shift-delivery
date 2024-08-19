@@ -5,3 +5,5 @@ export * from './IconExit.tsx';
 export * from './IconLocation.tsx';
 export * from './IconNavigate.tsx';
 export * from './IconPackage.tsx';
+export * from './IconAirpalane.tsx';
+export * from './IconBus.tsx';
