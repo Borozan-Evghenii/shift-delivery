@@ -18,6 +18,8 @@ enum Payer {
   SENDER
 }
 
+type DeliveryType = 'DEFAULT' | 'EXPRESS';
+
 enum Status {
   0,
   1,
@@ -129,14 +131,14 @@ type CreateDeliveryOrderDto = {
   };
 } & Omit<DeliveryOrder, 'status' | 'cancellable'>;
 
-type CalculateDeliveryResponse = { options: DeliveryOption } & BaseResponse;
+type CalculateDeliveryResponse = { options: DeliveryOption[] } & BaseResponse;
 
-type DeliveryOption = {
+export type DeliveryOption = {
   id: string;
-  price: string;
-  days: string;
+  price: number;
+  days: number;
   name: string;
-  type: string;
+  type: DeliveryType;
 };
 // Otp
 
