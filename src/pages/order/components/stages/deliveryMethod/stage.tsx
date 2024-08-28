@@ -6,7 +6,7 @@ import { useDeliveryMethod } from './hooks/useDeliveryMethod';
 import { DeliveryMethodLoading } from './loading';
 
 export const DeliveryMethod = () => {
-  const { state } = useDeliveryMethod();
+  const { state, functions } = useDeliveryMethod();
 
   if (state.data.isPending) {
     return <DeliveryMethodLoading />;
@@ -17,7 +17,11 @@ export const DeliveryMethod = () => {
       <Typography variant='title-h2'>Способ отправки</Typography>
       <div className='flex w-full gap-6'>
         {state.data.data?.data.options.map((option) => (
-          <DeliveryCard key={option.id} data={option} />
+          <DeliveryCard
+            key={option.id}
+            data={option}
+            onClick={() => functions.goToSender(option)}
+          />
         ))}
       </div>
     </PageLayout>

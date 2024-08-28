@@ -1,7 +1,8 @@
 import type { Stage } from '../../context/stage';
 import { useStage } from '../../context/stage';
+import { useOrderPage } from '../../hooks/useOrderPage';
 import { CheckIn, PaymentMethod, Receiver, ReceivPoint, Sender, SendPoint } from '../stages';
-import { DeliveryMethod } from '../stages/deliveryMethod/DeliveryMethod';
+import { DeliveryMethod } from '../stages/deliveryMethod/stage';
 
 const component: Record<Stage, React.ReactNode> = {
   deliveryMethod: <DeliveryMethod />,
@@ -15,5 +16,14 @@ const component: Record<Stage, React.ReactNode> = {
 
 export const StageContainer = () => {
   const { stage } = useStage();
-  return component[stage];
+  const orderPage = useOrderPage();
+
+  return (
+    <form
+      className='w-full'
+      onSubmit={orderPage.state.form.createOrderForm.handleSubmit(orderPage.functions.onSubmit)}
+    >
+      {component[stage]}
+    </form>
+  );
 };

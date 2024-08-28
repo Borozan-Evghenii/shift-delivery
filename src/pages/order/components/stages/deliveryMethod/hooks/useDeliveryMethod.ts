@@ -1,13 +1,17 @@
 import { useSearch } from '@tanstack/react-router';
 import React from 'react';
+import { useFormContext } from 'react-hook-form';
 
 import { useStage } from '@/pages/order/context/stage';
 import { usePostDeliveryCalcMutation } from '@/utils/api';
 import { ROUTE } from '@/utils/constants';
 
+import type { DeliveryOption } from '../../../../../../../@types/models';
+
 export const useDeliveryMethod = () => {
-  const { setStage } = useStage();
   const data = useSearch({ from: ROUTE.ORDER });
+  const createOrderForm = useFormContext();
+  const stage = useStage();
 
   const mutate = usePostDeliveryCalcMutation();
 
@@ -15,10 +19,13 @@ export const useDeliveryMethod = () => {
     mutate.mutate({ params: data });
   }, []);
 
-  const goToSender = () => setStage('sender');
+  const goToSender = (option: DeliveryOption) => {
+    createOrderForm.setValue('option', { ...option });
+    stage.setStage('receiver');
+  };
 
   return {
     state: { data: mutate },
-    function: { next: goToSender }
+    functions: { goToSender }
   };
 };

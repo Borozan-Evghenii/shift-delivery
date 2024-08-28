@@ -43,7 +43,7 @@ type DeliveryOrder = {
     street: string;
     house: string;
     apartament: number;
-    comment: number;
+    comment: string;
   };
   sender: {
     phone: string;
@@ -55,7 +55,7 @@ type DeliveryOrder = {
     street: string;
     house: string;
     apartament: number;
-    comment: number;
+    comment: string;
   };
   receiver: {
     phone: string;
