@@ -1,5 +1,4 @@
 import { QueryClient } from '@tanstack/react-query';
-import { StrictMode } from 'react';
 import ReactDOM from 'react-dom/client';
 
 import './assets/styles/global.css';
@@ -14,9 +13,7 @@ const providerProps: Omit<ProvidersProps, 'children'> = {
 };
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <Provider {...providerProps}>
-      <App />
-    </Provider>
-  </StrictMode>
+  <Provider {...providerProps}>
+    <App />
+  </Provider>
 );

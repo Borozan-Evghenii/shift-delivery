@@ -62,6 +62,3 @@ export const useIndexPage = () => {
     form: { calculateForm }
   };
 };
-
-// onSubmit redirect user to create delivery order page with search params which contain for request delivery/calc
-// form constrol

@@ -13,4 +13,9 @@ describe('beautifyPrice ', () => {
 
     expect(result).toBe('964 000');
   });
+  test('should display 9 600 ', () => {
+    const result = beautifyPrice(9600);
+
+    expect(result).toBe('9 600');
+  });
 });

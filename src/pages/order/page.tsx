@@ -7,7 +7,7 @@ export const OrderPage = () => {
 
   return (
     <div className='container flex h-[100vh] items-center justify-center'>
-      <Provider methods={orderPage.state.form.creteOrderForm}>
+      <Provider methods={orderPage.state.form.createOrderForm}>
         <StageContainer />
       </Provider>
     </div>
