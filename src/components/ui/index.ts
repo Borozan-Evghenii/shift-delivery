@@ -3,3 +3,4 @@ export * from './input/Input.tsx';
 export * from './select/Select.tsx';
 export * from './tab/Tab.tsx';
 export * from './typography/Typography.tsx';
+export * from './checkbox/CheckBox.tsx';
