@@ -1,5 +1,5 @@
 import { PageLayout } from '@/components/layout';
-import { Button, CheckBox, Input, Typography } from '@/components/ui';
+import { Button, RadioGroup, Typography } from '@/components/ui';
 
 import { usePaymentMethodPage } from './hooks/usePaymentMethodPage';
 
@@ -8,13 +8,15 @@ export const PaymentMethod = () => {
 
   return (
     <PageLayout>
-      <Input type='checkbox' />
       <Typography variant='title-h2'>Оплата доставки</Typography>
       <div className='flex w-[500px] flex-col gap-6'>
-        <CheckBox.Root>
-          <CheckBox.Indicator />
-        </CheckBox.Root>
-        <p className='paragraph-16-medium'>Получатель</p>
+        <RadioGroup.Root
+          className='flex flex-col gap-3'
+          onValueChange={(data) => paymentMethod.state.createOrderForm.setValue('payer', data)}
+        >
+          <RadioGroup.Item checked label='Получатель' value='RECEIVER' />
+          <RadioGroup.Item label='Отправитель' value='SENDER' />
+        </RadioGroup.Root>
         <div className='flex w-[500px] gap-6 p-4'>
           <Button
             className='w-full'

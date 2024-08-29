@@ -4,7 +4,6 @@ import {
   optionsSchema,
   receiverPointSchema,
   receiverSchema,
-  senderAdressSchema,
   senderPointSchema,
   senderSchema
 } from './orderSchemas';
@@ -12,10 +11,8 @@ import {
 export const createOrderFormSchema = zod.object({
   option: optionsSchema,
   senderPoint: senderPointSchema,
-  senderAdress: senderAdressSchema,
   sender: senderSchema,
   receiverPoint: receiverPointSchema,
-
   receiver: receiverSchema,
   payer: zod.string().min(1)
 });

@@ -23,27 +23,27 @@ export const ReceivPoint = () => {
           label='Номер дома'
           placeholder='Дом'
           {...receivPoint.state.createOrderForm.register('receiverPoint.house')}
-          error={!!receivPoint.state.createOrderForm.formState.errors?.senderAdress?.house}
+          error={!!receivPoint.state.createOrderForm.formState.errors?.receiverPoint?.house}
           helpText={
-            receivPoint.state.createOrderForm.formState.errors?.senderAdress?.house?.message
+            receivPoint.state.createOrderForm.formState.errors?.receiverPoint?.house?.message
           }
         />
         <Input
           label='Номер квартиры'
           placeholder='Квартира'
           {...receivPoint.state.createOrderForm.register('receiverPoint.apartament')}
-          error={!!receivPoint.state.createOrderForm.formState.errors?.senderAdress?.apartament}
+          error={!!receivPoint.state.createOrderForm.formState.errors?.receiverPoint?.apartament}
           helpText={
-            receivPoint.state.createOrderForm.formState.errors?.senderAdress?.apartament?.message
+            receivPoint.state.createOrderForm.formState.errors?.receiverPoint?.apartament?.message
           }
         />
         <Input
           label='Заметка'
           placeholder='Заметка для курьера'
           {...receivPoint.state.createOrderForm.register('receiverPoint.comment')}
-          error={!!receivPoint.state.createOrderForm.formState.errors?.senderAdress?.comment}
+          error={!!receivPoint.state.createOrderForm.formState.errors?.receiverPoint?.comment}
           helpText={
-            receivPoint.state.createOrderForm.formState.errors?.senderAdress?.comment?.message
+            receivPoint.state.createOrderForm.formState.errors?.receiverPoint?.comment?.message
           }
         />
         <div className='flex w-[500px] gap-6 p-4'>

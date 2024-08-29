@@ -13,34 +13,32 @@ export const SendPoint = () => {
         <Input
           label='Улица'
           placeholder='Улица'
-          {...sendPoint.state.createOrderForm.register('senderAdress.street')}
-          error={!!sendPoint.state.createOrderForm.formState.errors?.senderAdress?.street}
-          helpText={sendPoint.state.createOrderForm.formState.errors?.senderAdress?.street?.message}
+          {...sendPoint.state.createOrderForm.register('senderPoint.street')}
+          error={!!sendPoint.state.createOrderForm.formState.errors?.senderPoint?.street}
+          helpText={sendPoint.state.createOrderForm.formState.errors?.senderPoint?.street?.message}
         />
         <Input
           label='Номер дома'
           placeholder='Дом'
-          {...sendPoint.state.createOrderForm.register('senderAdress.house')}
-          error={!!sendPoint.state.createOrderForm.formState.errors?.senderAdress?.house}
-          helpText={sendPoint.state.createOrderForm.formState.errors?.senderAdress?.house?.message}
+          {...sendPoint.state.createOrderForm.register('senderPoint.house')}
+          error={!!sendPoint.state.createOrderForm.formState.errors?.senderPoint?.house}
+          helpText={sendPoint.state.createOrderForm.formState.errors?.senderPoint?.house?.message}
         />
         <Input
           label='Номер квартиры'
           placeholder='Квартира'
-          {...sendPoint.state.createOrderForm.register('senderAdress.apartament')}
-          error={!!sendPoint.state.createOrderForm.formState.errors?.senderAdress?.apartament}
+          {...sendPoint.state.createOrderForm.register('senderPoint.apartament')}
+          error={!!sendPoint.state.createOrderForm.formState.errors?.senderPoint?.apartament}
           helpText={
-            sendPoint.state.createOrderForm.formState.errors?.senderAdress?.apartament?.message
+            sendPoint.state.createOrderForm.formState.errors?.senderPoint?.apartament?.message
           }
         />
         <Input
           label='Заметка'
           placeholder='Заметка для курьера'
-          {...sendPoint.state.createOrderForm.register('senderAdress.comment')}
-          error={!!sendPoint.state.createOrderForm.formState.errors?.senderAdress?.comment}
-          helpText={
-            sendPoint.state.createOrderForm.formState.errors?.senderAdress?.comment?.message
-          }
+          {...sendPoint.state.createOrderForm.register('senderPoint.comment')}
+          error={!!sendPoint.state.createOrderForm.formState.errors?.senderPoint?.comment}
+          helpText={sendPoint.state.createOrderForm.formState.errors?.senderPoint?.comment?.message}
         />
         <div className='flex w-[500px] gap-6 p-4'>
           <Button
