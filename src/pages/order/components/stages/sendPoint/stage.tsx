@@ -1,10 +1,10 @@
 import { PageLayout } from '@/components/layout';
 import { Button, Input, Typography } from '@/components/ui';
 
-import { useSendPointPage } from './hooks/useSendPointPage';
+import { useSendPointStage } from './hooks/useSendPointStage';
 
 export const SendPoint = () => {
-  const sendPoint = useSendPointPage();
+  const sendPoint = useSendPointStage();
 
   return (
     <PageLayout>

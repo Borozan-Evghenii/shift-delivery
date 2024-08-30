@@ -2,11 +2,11 @@ import { PageLayout } from '@/components/layout';
 import { Typography } from '@/components/ui';
 
 import { DeliveryCard } from './components/deliveryCard/DeliveryCard';
-import { useDeliveryMethod } from './hooks/useDeliveryMethod';
+import { useDeliveryMethodStage } from './hooks/useDeliveryMethodStage';
 import { DeliveryMethodLoading } from './loading';
 
 export const DeliveryMethod = () => {
-  const { state, functions } = useDeliveryMethod();
+  const { state, functions } = useDeliveryMethodStage();
 
   if (state.data.isPending) {
     return <DeliveryMethodLoading />;

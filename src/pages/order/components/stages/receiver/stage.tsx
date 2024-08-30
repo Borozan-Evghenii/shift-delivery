@@ -1,10 +1,10 @@
 import { PageLayout } from '@/components/layout';
 import { Button, Input, Typography } from '@/components/ui';
 
-import { useReceiverPage } from './hooks/useReceiverPage';
+import { useReceiverStage } from './hooks/useReceiverStage';
 
 export const Receiver = () => {
-  const receiver = useReceiverPage();
+  const receiver = useReceiverStage();
 
   return (
     <PageLayout>

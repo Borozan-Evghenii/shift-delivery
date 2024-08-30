@@ -3,7 +3,7 @@ import { useStage } from '@/pages/order/context/stage';
 
 import { beautifyPrice } from '../../../../../../utils/helper/beutifyPrice/beutifyPrice';
 
-export const useCheckInPage = () => {
+export const useCheckInStage = () => {
   const createOrderForm = useCreateOrderFormContext();
   const stage = useStage();
 

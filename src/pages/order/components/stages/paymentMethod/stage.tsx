@@ -1,10 +1,10 @@
 import { PageLayout } from '@/components/layout';
 import { Button, RadioGroup, Typography } from '@/components/ui';
 
-import { usePaymentMethodPage } from './hooks/usePaymentMethodPage';
+import { usePaymentMethodStage } from './hooks/usePaymentMethodStage';
 
 export const PaymentMethod = () => {
-  const paymentMethod = usePaymentMethodPage();
+  const paymentMethod = usePaymentMethodStage();
 
   return (
     <PageLayout>

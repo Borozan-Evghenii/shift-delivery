@@ -1,10 +1,10 @@
 import { PageLayout } from '@/components/layout';
 import { Button, Card, Typography } from '@/components/ui';
 
-import { useCheckInPage } from './hooks/useCheckInPage';
+import { useCheckInStage } from './hooks/useCheckInStage';
 
 export const CheckIn = () => {
-  const checkIn = useCheckInPage();
+  const checkIn = useCheckInStage();
 
   return (
     <PageLayout>

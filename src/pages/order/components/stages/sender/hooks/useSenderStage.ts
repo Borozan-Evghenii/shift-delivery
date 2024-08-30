@@ -2,7 +2,7 @@ import { useFormContext } from 'react-hook-form';
 
 import { useStage } from '@/pages/order/context/stage';
 
-export const useSenderPage = () => {
+export const useSenderStage = () => {
   const createOrderForm = useFormContext();
   const stage = useStage();
 

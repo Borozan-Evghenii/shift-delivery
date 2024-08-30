@@ -1,7 +1,7 @@
 import { useCreateOrderFormContext } from '@/pages/order/context/form/useCreateOrderFormContext';
 import { useStage } from '@/pages/order/context/stage';
 
-export const useReceiverPointPage = () => {
+export const useReceiverPointStage = () => {
   const createOrderForm = useCreateOrderFormContext();
   const stage = useStage();
 
