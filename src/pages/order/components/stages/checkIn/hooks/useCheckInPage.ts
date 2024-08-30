@@ -1,6 +1,8 @@
 import { useCreateOrderFormContext } from '@/pages/order/context/form/useCreateOrderFormContext';
 import { useStage } from '@/pages/order/context/stage';
 
+import { beautifyPrice } from '../../../../../../utils/helper/beutifyPrice/beutifyPrice';
+
 export const useCheckInPage = () => {
   const createOrderForm = useCreateOrderFormContext();
   const stage = useStage();
@@ -10,7 +12,7 @@ export const useCheckInPage = () => {
   const receiverPhone = `${createOrderForm.getValues('receiver.phone')}`;
   const senderPhone = `${createOrderForm.getValues('sender.phone')} `;
   const senderComment = `${createOrderForm.getValues('senderPoint.comment')} `;
-  const price = `${createOrderForm.getValues('option.price')} `;
+  const price = `${beautifyPrice(createOrderForm.getValues('option.price'))} `;
   const deliveryType = `${createOrderForm.getValues('option.type')} `;
   const deliveryTime = `${createOrderForm.getValues('option.days')} `;
   const receiverComment = `${createOrderForm.getValues('receiverPoint.comment')} `;
