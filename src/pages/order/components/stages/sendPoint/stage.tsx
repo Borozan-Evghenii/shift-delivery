@@ -52,6 +52,7 @@ export const SendPoint = () => {
           <Button
             className='w-full'
             colour='primary'
+            disabled={!sendPoint.state.isStageValid()}
             variant='contained'
             onClick={() => {
               sendPoint.functions.goToReceivPoint();

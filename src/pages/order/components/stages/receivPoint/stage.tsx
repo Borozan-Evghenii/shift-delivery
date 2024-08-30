@@ -58,6 +58,7 @@ export const ReceivPoint = () => {
           <Button
             className='w-full'
             colour='primary'
+            disabled={!receivPoint.state.isStageValid()}
             variant='contained'
             onClick={() => {
               receivPoint.functions.goToPaymentMethod();

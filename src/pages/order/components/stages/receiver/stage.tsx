@@ -55,6 +55,7 @@ export const Receiver = () => {
         <Button
           className='w-full'
           colour='primary'
+          disabled={!receiver.state.isStageValid()}
           variant='contained'
           onClick={() => {
             receiver.functions.goToSender();
