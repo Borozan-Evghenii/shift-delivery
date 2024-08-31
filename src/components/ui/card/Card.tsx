@@ -4,7 +4,7 @@ import { cva } from 'class-variance-authority';
 import { cn } from '@/utils/helper/clasnames';
 
 interface CardProps extends React.HTMLAttributes<'div'>, VariantProps<typeof cardVariant> {
-  variant: 'outline' | 'filled';
+  variant?: 'outline' | 'filled';
 }
 
 const cardVariant = cva(
@@ -19,6 +19,12 @@ const cardVariant = cva(
   }
 );
 
-export const Card = ({ variant, children }: CardProps) => (
-  <div className={cn(cardVariant({ variant }))}>{children}</div>
+export const CARD_TEST_ID = {
+  CONTAINER: 'card-container'
+};
+
+export const Card = ({ variant = 'filled', children }: CardProps) => (
+  <div className={cn(cardVariant({ variant }))} data-testid={CARD_TEST_ID.CONTAINER}>
+    {children}
+  </div>
 );
