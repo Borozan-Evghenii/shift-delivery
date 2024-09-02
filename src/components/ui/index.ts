@@ -5,3 +5,4 @@ export * from './tab/Tab.tsx';
 export * from './typography/Typography.tsx';
 export * from './radioGroup/RadioGroup.tsx';
 export * from './card/Card.tsx';
+export * from './modal/Modal.tsx';

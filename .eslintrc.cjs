@@ -37,10 +37,13 @@ module.exports = {
   },
   plugins: ['react-refresh'],
   rules: {
+    'jsx-a11y/no-noninteractive-element-interactions': 0,
+    'jsx-a11y/click-events-have-key-events': 0,
     'no-throw-literal': 0,
     'react-hooks/exhaustive-deps': 0,
     '@typescript-eslint/no-misused-promises': 0,
     '@typescript-eslint/no-throw-literal': 0,
+
     '@typescript-eslint/no-shadow': 0,
     '@typescript-eslint/consistent-type-imports': [
       'error',

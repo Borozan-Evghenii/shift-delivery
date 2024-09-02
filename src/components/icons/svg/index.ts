@@ -8,3 +8,4 @@ export * from './IconPackage.tsx';
 export * from './IconAirpalane.tsx';
 export * from './IconBus.tsx';
 export * from './IconConfirm.tsx';
+export * from './IconClosed.tsx';
