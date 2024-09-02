@@ -8,7 +8,8 @@ const buttonVariants = cva(
   [
     'inline-flex items-center justify-center whitespace-nowrap text-base',
     'focus-visible:outline-none',
-    'disabled:pointer-events-none'
+    'disabled:pointer-events-none',
+    'max-w-[328px]'
   ],
   {
     variants: {

@@ -8,7 +8,7 @@ import { ROUTE } from '@/utils/constants';
 
 import type { DeliveryOption } from '../../../../../../../@types/models';
 
-export const useDeliveryMethod = () => {
+export const useDeliveryMethodStage = () => {
   const data = useSearch({ from: ROUTE.ORDER });
   const createOrderForm = useFormContext();
   const stage = useStage();

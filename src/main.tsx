@@ -12,6 +12,8 @@ const providerProps: Omit<ProvidersProps, 'children'> = {
   query: { client: queryClient }
 };
 
+// sessionRequest
+
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <Provider {...providerProps}>
     <App />

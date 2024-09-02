@@ -17,9 +17,9 @@ export const DeliveryCard = ({ data, ...props }: DeliveryCardProps) => (
   >
     <div className='flex items-start justify-center rounded-full bg-secondary p-3 group-hover:bg-white'>
       {data.type === 'DEFAULT' ? (
-        <IconAirplane className='text-tertiary group-hover:text-brand' />
-      ) : (
         <IconBus className='text-tertiary group-hover:text-brand' />
+      ) : (
+        <IconAirplane className='text-tertiary group-hover:text-brand' />
       )}
     </div>
     <div className='flex flex-col items-start gap-6'>
