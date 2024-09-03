@@ -23,6 +23,19 @@ export const useCheckInStage = () => {
     stage.setStage('sender');
   };
 
+  const goSender = () => {
+    stage.setStage('sender');
+  };
+  const goReceiver = () => {
+    stage.setStage('receiver');
+  };
+  const goSenderPoint = () => {
+    stage.setStage('sendPoint');
+  };
+  const goReceiverPoint = () => {
+    stage.setStage('receivPoint');
+  };
+
   return {
     state: {
       receiverAdress,
@@ -37,6 +50,6 @@ export const useCheckInStage = () => {
       deliveryTime,
       senderAdress
     },
-    functions: { goBack }
+    functions: { goBack, goReceiver, goSender, goSenderPoint, goReceiverPoint }
   };
 };

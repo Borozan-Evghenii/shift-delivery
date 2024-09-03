@@ -1,3 +1,4 @@
+import { IconEdit } from '@/components/icons/svg';
 import { PageLayout } from '@/components/layout';
 import { Button, Card, Typography } from '@/components/ui';
 
@@ -12,12 +13,19 @@ export const CheckIn = () => {
       <div className='flex w-full flex-col gap-6 pb-8'>
         <Card variant='filled'>
           <div className='flex w-full flex-col gap-4'>
-            <Typography variant='paragraph-16-medium'>Получатель</Typography>
+            <div className='flex items-center justify-start gap-4'>
+              <Typography variant='paragraph-16-medium'>Получатель</Typography>
+              <Button variant='text' onClick={checkIn.functions.goReceiver}>
+                <IconEdit />
+              </Button>
+            </div>
+
             <div className='flex items-center gap-6'>
               <div className='flex flex-col gap-0.5'>
                 <Typography className='text-tertiary' variant='paragraph-12'>
                   ФИО
                 </Typography>
+
                 <Typography variant='paragraph-16'>{checkIn.state.receiverName}</Typography>
               </div>
               <div className='flex flex-col gap-0.5'>
@@ -31,7 +39,13 @@ export const CheckIn = () => {
         </Card>
         <Card variant='filled'>
           <div className='flex w-full flex-col gap-4'>
-            <Typography variant='paragraph-16-medium'>Отправитель</Typography>
+            <div className='flex items-center justify-start gap-4'>
+              <Typography variant='paragraph-16-medium'>Отправитель</Typography>
+              <Button variant='text' onClick={checkIn.functions.goSender}>
+                <IconEdit />
+              </Button>
+            </div>
+
             <div className='flex items-center gap-6'>
               <div className='flex flex-col gap-0.5'>
                 <Typography className='text-tertiary' variant='paragraph-12'>
@@ -50,7 +64,13 @@ export const CheckIn = () => {
         </Card>
         <Card variant='filled'>
           <div className='flex w-full flex-col gap-4'>
-            <Typography variant='paragraph-16-medium'>Откуда забрать</Typography>
+            <div className='flex items-center justify-start gap-4'>
+              <Typography variant='paragraph-16-medium'>Откуда забрать</Typography>
+              <Button variant='text' onClick={checkIn.functions.goSenderPoint}>
+                <IconEdit />
+              </Button>
+            </div>
+
             <div className='flex items-center gap-6'>
               <div className='flex flex-col gap-0.5'>
                 <Typography className='text-tertiary' variant='paragraph-12'>
@@ -69,7 +89,13 @@ export const CheckIn = () => {
         </Card>
         <Card variant='filled'>
           <div className='flex w-full flex-col gap-4'>
-            <Typography variant='paragraph-16-medium'>Откуда забрать</Typography>
+            <div className='flex items-center justify-start gap-4'>
+              <Typography variant='paragraph-16-medium'>Куда доставить</Typography>
+              <Button variant='text' onClick={checkIn.functions.goReceiverPoint}>
+                <IconEdit />
+              </Button>
+            </div>
+
             <div className='flex items-center gap-6'>
               <div className='flex flex-col gap-0.5'>
                 <Typography className='text-tertiary' variant='paragraph-12'>
