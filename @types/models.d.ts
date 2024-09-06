@@ -13,20 +13,11 @@ type User = {
 };
 
 // Delivery
-enum Payer {
-  RECEIVER,
-  SENDER
-}
+type Payer = 'SENDER' | 'RECEIVER';
 
 type DeliveryType = 'DEFAULT' | 'EXPRESS';
 
-enum Status {
-  0,
-  1,
-  2,
-  3,
-  4
-}
+type Status = 0 | 1 | 2 | 3 | 4 | 5;
 
 type DeliveryOrdersResponse = {
   orders: DeliveryOrder;
@@ -42,26 +33,32 @@ type DeliveryOrder = {
   senderAddress: {
     street: string;
     house: string;
-    apartament: number;
-    comment: string;
+    apartment: string;
+    comment?: string;
   };
   sender: {
     phone: string;
     firstname: string;
     lastname: string;
-    middlename: string;
+    middlename?: string;
   };
   receiverPoint: {
-    street: string;
-    house: string;
-    apartament: number;
-    comment: string;
+    id: string;
+    name: string;
+    latitude: number;
+    longitude: number;
   };
   receiver: {
     phone: string;
     firstname: string;
     lastname: string;
-    middlename: string;
+    middlename?: string;
+  };
+  receiverAddress: {
+    street: string;
+    house: string;
+    apartment: string;
+    comment?: string;
   };
   payer: Payer;
   status: Status;
@@ -124,8 +121,8 @@ type DeliverResponse = {
 type CreateDeliveryOrderDto = {
   option: {
     id: string;
-    price: string;
-    days: string;
+    price: number;
+    days: number;
     name: string;
     type: string;
   };

@@ -1,19 +1,19 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 
-import type { CreateOrderFormSchemaType } from '../constants/schema';
+import type { OrderFormSchemaType } from '../constants/schema';
 import { createOrderFormSchema } from '../constants/schema';
 
 export const useOrderPage = () => {
-  const createOrderForm = useForm<CreateOrderFormSchemaType>({
+  const createOrderForm = useForm<OrderFormSchemaType>({
     resolver: zodResolver(createOrderFormSchema),
-    mode: 'onChange'
+    mode: 'onChange',
+    defaultValues: {
+      payer: 'SENDER'
+    }
   });
 
-  const onSubmit = (data: CreateOrderFormSchemaType) => data;
-
   return {
-    state: { form: { createOrderForm } },
-    functions: { onSubmit }
+    state: { form: { createOrderForm } }
   };
 };

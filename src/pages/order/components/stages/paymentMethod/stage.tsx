@@ -1,6 +1,8 @@
 import { PageLayout } from '@/components/layout';
 import { Button, RadioGroup, Typography } from '@/components/ui';
 
+import type { Payer } from '../../../../../../@types/models';
+
 import { usePaymentMethodStage } from './hooks/usePaymentMethodStage';
 
 export const PaymentMethod = () => {
@@ -13,7 +15,9 @@ export const PaymentMethod = () => {
         <RadioGroup.Root
           className='flex flex-col gap-3'
           defaultValue='SENDER'
-          onValueChange={(data) => paymentMethod.state.createOrderForm.setValue('payer', data)}
+          onValueChange={(data) => {
+            paymentMethod.state.createOrderForm.setValue('payer', data as Payer);
+          }}
         >
           <RadioGroup.Item label='Получатель' value='RECEIVER' />
           <RadioGroup.Item label='Отправитель' value='SENDER' />

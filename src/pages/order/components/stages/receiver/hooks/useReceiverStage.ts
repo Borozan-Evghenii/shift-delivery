@@ -25,7 +25,6 @@ export const useReceiverStage = () => {
     if (isDirtyStage) {
       return receiverSchema.safeParse({ ...createOrderForm.watch('receiver') }).success;
     }
-
     return false;
   };
 
