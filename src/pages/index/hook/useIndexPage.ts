@@ -26,6 +26,8 @@ export const useIndexPage = () => {
   ) => {
     const point = deliveryPoints.data?.data.points.filter((point) => point.id === deliveryPointId);
     calculateForm.setValue(fieldName, {
+      id: point![0].id,
+      name: point![0].name,
       latitude: point![0].latitude,
       longitude: point![0].longitude
     });

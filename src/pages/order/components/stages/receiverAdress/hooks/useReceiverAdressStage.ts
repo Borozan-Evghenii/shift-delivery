@@ -1,10 +1,10 @@
 import React from 'react';
 
-import { receiverPointSchema } from '@/pages/order/constants/orderSchemas';
+import { receiverAdressSchema } from '@/pages/order/constants/orderSchemas';
 import { useCreateOrderFormContext } from '@/pages/order/context/form/useCreateOrderFormContext';
 import { useStage } from '@/pages/order/context/stage';
 
-export const useReceiverPointStage = () => {
+export const useReceiverAdressStage = () => {
   const createOrderForm = useCreateOrderFormContext();
   const stage = useStage();
 
@@ -17,12 +17,14 @@ export const useReceiverPointStage = () => {
   };
 
   const isDirtyStage =
-    createOrderForm.getFieldState('receiverPoint.street').isDirty &&
-    createOrderForm.getFieldState('receiverPoint.house').isDirty;
+    createOrderForm.getFieldState('receiverAddress.street').isDirty &&
+    createOrderForm.getFieldState('receiverAddress.apartment').isDirty &&
+    createOrderForm.getFieldState('receiverAddress.house').isDirty;
 
   const isStageValid = () => {
     if (isDirtyStage) {
-      return receiverPointSchema.safeParse({ ...createOrderForm.watch('receiverPoint') }).success;
+      return receiverAdressSchema.safeParse({ ...createOrderForm.watch('receiverAddress') })
+        .success;
     }
 
     return false;
@@ -30,7 +32,7 @@ export const useReceiverPointStage = () => {
 
   React.useEffect(() => {
     isStageValid();
-  }, [createOrderForm.watch('receiverPoint')]);
+  }, [createOrderForm.watch('receiverAddress')]);
 
   return {
     state: { createOrderForm, isStageValid },

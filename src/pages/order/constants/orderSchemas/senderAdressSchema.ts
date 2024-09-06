@@ -1,6 +1,6 @@
 import * as zod from 'zod';
 
-export const senderPointSchema = zod.object({
+export const senderAdressSchema = zod.object({
   street: zod
     .string({ required_error: 'Поле является обязательным' })
     .min(1, { message: 'Поле является обязательным' })
@@ -28,13 +28,13 @@ export const senderPointSchema = zod.object({
     .regex(/^(?!.*--)(?!^-)(?!.*-$).*/, {
       message: 'Некорректный формат'
     }),
-  apartament: zod
-    .string()
+  apartment: zod
+    .string({ required_error: 'Поле является обязательным' })
+    .min(1, { message: 'Поле является обязательным' })
     .max(100)
     .regex(/^(?![\s/':;_\-.,#])[a-zA-Zа-яА-ЯёЁ0-9\s/':;_\-.,#]*$/, {
       message: 'Недопустим ввод спец. символов в начале и в конце строки'
-    })
-    .optional(),
+    }),
   comment: zod
     .string()
     .max(300)

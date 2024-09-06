@@ -11,16 +11,16 @@ export const useCheckInStage = () => {
   const senderName = `${createOrderForm.getValues('sender.firstname')} ${createOrderForm.getValues('sender.middlename')} ${createOrderForm.getValues('sender.lastname')}`;
   const receiverPhone = `${createOrderForm.getValues('receiver.phone')}`;
   const senderPhone = `${createOrderForm.getValues('sender.phone')} `;
-  const senderComment = `${createOrderForm.getValues('senderPoint.comment')} `;
+  const senderComment = `${createOrderForm.getValues('senderAddress.comment')} `;
   const price = `${beautifyPrice(createOrderForm.getValues('option.price'))} `;
   const deliveryType = `${createOrderForm.getValues('option.type')} `;
   const deliveryTime = `${createOrderForm.getValues('option.days')} `;
-  const receiverComment = `${createOrderForm.getValues('receiverPoint.comment')} `;
-  const senderAdress = `ул. ${createOrderForm.getValues('senderPoint.street')} д. ${createOrderForm.getValues('senderPoint.house')}`;
-  const receiverAdress = `ул. ${createOrderForm.getValues('receiverPoint.street')} д. ${createOrderForm.getValues('receiverPoint.house')}`;
+  const receiverComment = `${createOrderForm.getValues('receiverAddress.comment')} `;
+  const senderAdress = `ул. ${createOrderForm.getValues('senderAddress.street')} д. ${createOrderForm.getValues('senderAddress.house')}`;
+  const receiverAdress = `ул. ${createOrderForm.getValues('receiverAddress.street')} д. ${createOrderForm.getValues('receiverAddress.house')}`;
 
   const goBack = () => {
-    stage.setStage('sender');
+    stage.setStage('paymentMethod');
   };
 
   const goSender = () => {
@@ -38,6 +38,7 @@ export const useCheckInStage = () => {
 
   return {
     state: {
+      createOrderForm,
       receiverAdress,
       receiverComment,
       receiverName,

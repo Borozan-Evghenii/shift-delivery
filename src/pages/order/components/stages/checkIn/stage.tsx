@@ -143,7 +143,7 @@ export const CheckIn = () => {
           >
             Назад
           </Button>
-          <Button className='w-full' colour='primary' variant='contained'>
+          <Button className='w-full' colour='primary' type='submit' variant='contained'>
             Отправить
           </Button>
         </div>

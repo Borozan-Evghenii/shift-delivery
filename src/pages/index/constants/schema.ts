@@ -8,10 +8,14 @@ export const calcDeliverySchema = zod.object({
     width: zod.number().min(1)
   }),
   senderPoint: zod.object({
+    id: zod.string(),
+    name: zod.string(),
     latitude: zod.number(),
     longitude: zod.number()
   }),
   receiverPoint: zod.object({
+    id: zod.string(),
+    name: zod.string(),
     latitude: zod.number(),
     longitude: zod.number()
   })

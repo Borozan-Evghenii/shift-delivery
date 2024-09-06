@@ -2,19 +2,31 @@ import * as zod from 'zod';
 
 import {
   optionsSchema,
-  receiverPointSchema,
+  receiverAdressSchema,
   receiverSchema,
-  senderPointSchema,
+  senderAdressSchema,
   senderSchema
 } from './orderSchemas';
 
 export const createOrderFormSchema = zod.object({
   option: optionsSchema,
-  senderPoint: senderPointSchema,
+  senderPoint: zod.object({
+    id: zod.string(),
+    longitude: zod.number(),
+    latitude: zod.number(),
+    name: zod.string()
+  }),
   sender: senderSchema,
-  receiverPoint: receiverPointSchema,
+  receiverPoint: zod.object({
+    id: zod.string(),
+    longitude: zod.number(),
+    latitude: zod.number(),
+    name: zod.string()
+  }),
   receiver: receiverSchema,
-  payer: zod.string().min(1)
+  senderAddress: senderAdressSchema,
+  receiverAddress: receiverAdressSchema,
+  payer: zod.union([zod.literal('RECEIVER'), zod.literal('SENDER')])
 });
 
-export type CreateOrderFormSchemaType = zod.infer<typeof createOrderFormSchema>;
+export type OrderFormSchemaType = zod.infer<typeof createOrderFormSchema>;
