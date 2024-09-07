@@ -26,17 +26,20 @@ export const useAuthPage = () => {
     mode: 'onChange'
   });
 
+  const onOtp = ({ phone }: OtpType) =>
+    otp.mutate(
+      { params: { phone } },
+      {
+        onSuccess: () => {
+          setStage('CONFIRMATION');
+        }
+      }
+    );
+
   const onSubmit = form.handleSubmit(
     ({ phone, code }) => {
       if (stage === 'PHONE') {
-        otp.mutate(
-          { params: { phone } },
-          {
-            onSuccess: () => {
-              setStage('CONFIRMATION');
-            }
-          }
-        );
+        onOtp({ phone });
       } else {
         signIn.mutate(
           { params: { phone, code: +code! } },
@@ -59,5 +62,5 @@ export const useAuthPage = () => {
     (err) => console.log(err)
   );
 
-  return { state: { form, stage }, funtions: { onSubmit } };
+  return { state: { form, stage, otp }, funtions: { onSubmit, onOtp } };
 };

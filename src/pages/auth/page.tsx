@@ -1,6 +1,7 @@
 import { PageLayout } from '@/components/layout';
 import { Button, Input, Typography } from '@/components/ui';
 
+import { Retry } from './components/retry/Retry';
 import { useAuthPage } from './hooks/useAuthPage';
 
 export const AuthPage = () => {
@@ -31,6 +32,17 @@ export const AuthPage = () => {
             />
           )}
           <Button type='submit'>{state.stage === 'PHONE' ? 'Продолжить' : 'Войти'}</Button>
+
+          {state.otp.data?.data && (
+            <Retry retryDelay={state.otp.data?.data.retryDelay}>
+              <Typography
+                variant='paragraph-14-underline'
+                onClick={() => funtions.onOtp({ phone: state.form.getValues('phone') })}
+              >
+                Отправить ещё раз
+              </Typography>
+            </Retry>
+          )}
         </div>
       </form>
     </PageLayout>
