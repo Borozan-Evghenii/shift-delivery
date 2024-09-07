@@ -20,6 +20,8 @@ export const AuthProvider = ({ children }: SessionProviderProps) => {
         if (!value) {
           setIsAuth(value);
           localStorage.removeItem(LOCAL_STORAGE.TOKEN);
+        } else {
+          setIsAuth(value);
         }
       }
     }),

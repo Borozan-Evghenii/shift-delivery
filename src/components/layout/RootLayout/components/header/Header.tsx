@@ -8,6 +8,7 @@ import { useAuthContext } from '@/utils/contexts/session';
 export const Header = () => {
   const { isAuth } = useAuthContext();
   const location = useLocation();
+  const { setIsAuth } = useAuthContext();
 
   return (
     <header className='border-border-light fixed left-0 right-0 w-full border-b-2 bg-primary py-6'>
@@ -58,6 +59,7 @@ export const Header = () => {
             activeProps={{ className: 'text-brand' }}
             className='paragraph-16-medium flex gap-2 text-secondary hover:text-brand'
             to={ROUTE.INDEX}
+            onClick={() => setIsAuth(false)}
           >
             <IconExit />
             <span>Выйти</span>
