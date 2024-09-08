@@ -46,6 +46,8 @@ export const useAuthPage = () => {
           {
             onSuccess: (data) => {
               localStorage.setItem(LOCAL_STORAGE.TOKEN, data.data.token);
+              console.log('token', data.data.token);
+
               setIsAuth(true);
               navigate({
                 to: ROUTE.INDEX
