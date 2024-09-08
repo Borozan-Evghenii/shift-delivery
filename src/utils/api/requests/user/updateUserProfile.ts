@@ -4,5 +4,5 @@ import { api } from '../../instance';
 
 export type UpdateUserProfile = RequestConfig<UpdateProfileDto>;
 
-export const updateUserPropfile = async ({ params, config }: UpdateUserProfile) =>
-  api.patch<UpdateProfileResponse>('/', params, config);
+export const updateUserProfile = async ({ params, config }: UpdateUserProfile) =>
+  api.patch<UpdateProfileResponse>('users/profile', params, config);
