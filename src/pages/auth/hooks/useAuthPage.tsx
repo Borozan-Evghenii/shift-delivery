@@ -46,12 +46,11 @@ export const useAuthPage = () => {
           {
             onSuccess: (data) => {
               localStorage.setItem(LOCAL_STORAGE.TOKEN, data.data.token);
-              console.log('token', data.data.token);
 
               setIsAuth(true);
               navigate({
                 to: ROUTE.INDEX
-              }).catch((err) => console.log('@redirect on succes signin ', err));
+              }).catch(() => {});
             },
 
             onError: (data) => {
@@ -61,7 +60,7 @@ export const useAuthPage = () => {
         );
       }
     },
-    (err) => console.log(err)
+    () => {}
   );
 
   return { state: { form, stage, otp }, funtions: { onSubmit, onOtp } };
