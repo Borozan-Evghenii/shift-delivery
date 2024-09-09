@@ -20,8 +20,10 @@ type DeliveryType = 'DEFAULT' | 'EXPRESS';
 type Status = 0 | 1 | 2 | 3 | 4 | 5;
 
 type DeliveryOrdersResponse = {
-  orders: DeliveryOrder;
+  orders: Order[];
 } & BaseResponse;
+
+type Order = { _id: string; created: string; updated: string } & DeliveryOrder;
 
 type DeliveryOrder = {
   senderPoint: {

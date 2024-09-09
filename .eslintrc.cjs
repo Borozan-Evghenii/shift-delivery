@@ -37,6 +37,7 @@ module.exports = {
   },
   plugins: ['react-refresh'],
   rules: {
+    'no-underscore-dangle': 0,
     'jsx-a11y/no-noninteractive-element-interactions': 0,
     'jsx-a11y/click-events-have-key-events': 0,
     'no-throw-literal': 0,
