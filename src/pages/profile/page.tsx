@@ -1,6 +1,6 @@
 import { IconLocation } from '@/components/icons/svg';
 import { PageLayout } from '@/components/layout';
-import { Button, Input, Select, Typography } from '@/components/ui';
+import { Button, Input, Select, Toast, Typography } from '@/components/ui';
 
 import { useProfilePage } from './hooks/useProfilePage';
 import { ProfileLoading } from './loading';
@@ -54,6 +54,8 @@ export const ProfilePage = () => {
         )}
         <Button type='submit'>Обновить данные</Button>
       </form>
+
+      <Toast.Item ref={state.toast} />
     </PageLayout>
   );
 };

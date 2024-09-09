@@ -1,5 +1,7 @@
+import React from 'react';
 import { useForm } from 'react-hook-form';
 
+import type { ToastRefProps } from '@/components/ui';
 import {
   useGetDeliveryPoints,
   useGetUsersSessionQuery,
@@ -13,6 +15,7 @@ export const useProfilePage = () => {
   const userMutate = useUpdateUserProfileMutation();
   const city = useGetDeliveryPoints();
   const form = useForm<User>({ values: user.data?.data.user });
+  const toast = React.useRef<ToastRefProps>(null);
 
   const onSubmit = form.handleSubmit(
     (data: User) => {
@@ -31,21 +34,34 @@ export const useProfilePage = () => {
         },
         {
           onSuccess: () => {
-            user.refetch().catch((err) => {
-              console.log(err);
+            user.refetch().catch(() => {
+              toast.current?.publish({
+                title: 'Profile refetch wet wrong',
+                description: `Profile data cannot be refetched from server`
+              });
             });
-
-            console.log('succes notification');
+            toast.current?.publish({
+              title: 'Profile is updated',
+              description: 'Profile data is updated on server'
+            });
           },
-          onError: (err) => console.log('error notification', err)
+          onError: (err) =>
+            toast.current?.publish({
+              title: 'Some wet wrong',
+              description: `Profile data is updated on server ${err.data.reasone}`
+            })
         }
       );
     },
-    (err) => console.log('@submit error', err)
+    (err) =>
+      toast.current?.publish({
+        title: 'Submiting wet wrong',
+        description: `Profile data is updated on server ${err.root?.message}`
+      })
   );
 
   return {
-    state: { form, city, user },
+    state: { form, city, user, toast },
     functions: { onSubmit }
   };
 };
