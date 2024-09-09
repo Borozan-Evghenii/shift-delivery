@@ -7,7 +7,7 @@ import { TAB } from './constants/tab';
 import { useIndexPage } from './hook/useIndexPage';
 
 export const IndexPage = () => {
-  const { state, functions, form } = useIndexPage();
+  const { state, functions } = useIndexPage();
 
   return (
     <div className='h-[100vh] w-full bg-hero bg-cover bg-no-repeat'>
@@ -21,7 +21,7 @@ export const IndexPage = () => {
         <div className='justify-cente flex w-full items-center'>
           <form
             className='flex w-[500px] max-w-[500px] flex-col gap-6 rounded-3xl bg-white px-16 py-8'
-            onSubmit={form.calculateForm.handleSubmit(functions.onSubmit)}
+            onSubmit={state.calculateForm.handleSubmit(functions.onSubmit)}
           >
             <div>
               <Typography className='text-primary' variant='title-h2'>
@@ -46,9 +46,9 @@ export const IndexPage = () => {
                   ))}
                 </Select.Content>
               </Select.Root>
-              {form.calculateForm.formState.errors.senderPoint?.message && (
+              {state.calculateForm.formState.errors.senderPoint?.message && (
                 <p className='text-sm text-error'>
-                  {form.calculateForm.formState.errors.senderPoint?.message}
+                  {state.calculateForm.formState.errors.senderPoint?.message}
                 </p>
               )}
             </div>
@@ -71,9 +71,9 @@ export const IndexPage = () => {
                   ))}
                 </Select.Content>
               </Select.Root>
-              {form.calculateForm.formState.errors.receiverPoint?.message && (
+              {state.calculateForm.formState.errors.receiverPoint?.message && (
                 <p className='text-sm text-error'>
-                  {form.calculateForm.formState.errors.receiverPoint?.message}
+                  {state.calculateForm.formState.errors.receiverPoint?.message}
                 </p>
               )}
             </div>
@@ -110,7 +110,7 @@ export const IndexPage = () => {
                           <Input
                             placeholder='cm'
                             type='number'
-                            {...form.calculateForm.register('package.length', {
+                            {...state.calculateForm.register('package.length', {
                               required: { value: true, message: 'is rewuired' }
                             })}
                           />
@@ -120,7 +120,7 @@ export const IndexPage = () => {
                           <Input
                             placeholder='cm'
                             type='number'
-                            {...form.calculateForm.register('package.width', {
+                            {...state.calculateForm.register('package.width', {
                               required: { value: true, message: 'is rewuired' }
                             })}
                           />
@@ -130,7 +130,7 @@ export const IndexPage = () => {
                           <Input
                             placeholder='cm'
                             type='number'
-                            {...form.calculateForm.register('package.height', {
+                            {...state.calculateForm.register('package.height', {
                               required: { value: true, message: 'is rewuired' }
                             })}
                           />
@@ -140,7 +140,7 @@ export const IndexPage = () => {
                           <Input
                             placeholder='кг'
                             type='number'
-                            {...form.calculateForm.register('package.weight', {
+                            {...state.calculateForm.register('package.weight', {
                               required: { value: true, message: 'is rewuired' }
                             })}
                           />
@@ -150,9 +150,9 @@ export const IndexPage = () => {
                   </Tab.Root>
                 </Select.Content>
               </Select.Root>
-              {form.calculateForm.formState.errors?.package?.message && (
+              {state.calculateForm.formState.errors?.package?.message && (
                 <p className='text-sm text-error'>
-                  {form.calculateForm.formState.errors.package?.message}
+                  {state.calculateForm.formState.errors.package?.message}
                 </p>
               )}
             </div>
@@ -163,5 +163,3 @@ export const IndexPage = () => {
     </div>
   );
 };
-
-// Typography component

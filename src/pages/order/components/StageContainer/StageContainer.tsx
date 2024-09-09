@@ -18,14 +18,11 @@ const component: Record<Stage, React.ReactNode> = {
 };
 
 export const StageContainer = () => {
-  const stageContainer = useStageContainer();
+  const { state, functions } = useStageContainer();
 
   return (
     <>
-      <Modal
-        open={stageContainer.state.modal.open}
-        onClose={() => stageContainer.state.modal.setOpen(false)}
-      >
+      <Modal open={state.modal.open} onClose={() => state.modal.setOpen(false)}>
         <div className='flex max-w-[400px] flex-col items-center gap-10 text-center'>
           <div className='flex flex-col items-center gap-4'>
             <img alt='succes' className='h-[60px] w-[60px]' src={succes} />
@@ -39,13 +36,8 @@ export const StageContainer = () => {
         </div>
       </Modal>
 
-      <form
-        className='w-full'
-        onSubmit={stageContainer.state.createOrderForm.handleSubmit(
-          stageContainer.functions.onSubmit
-        )}
-      >
-        {component[stageContainer.state.stage]}
+      <form className='w-full' onSubmit={state.createOrderForm.handleSubmit(functions.onSubmit)}>
+        {component[state.stage]}
       </form>
     </>
   );

@@ -59,8 +59,7 @@ export const useIndexPage = () => {
   };
 
   return {
-    state: { deliveryPoints, packageType },
-    functions: { onSubmit, setPointCoordonates, setPackageType },
-    form: { calculateForm }
+    state: { deliveryPoints, packageType, calculateForm },
+    functions: { onSubmit, setPointCoordonates, setPackageType }
   };
 };

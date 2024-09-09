@@ -5,7 +5,7 @@ import { Button, Card, Typography } from '@/components/ui';
 import { useCheckInStage } from './hooks/useCheckInStage';
 
 export const CheckIn = () => {
-  const checkIn = useCheckInStage();
+  const { state, functions } = useCheckInStage();
 
   return (
     <PageLayout>
@@ -15,7 +15,7 @@ export const CheckIn = () => {
           <div className='flex w-full flex-col gap-4'>
             <div className='flex items-center justify-start gap-4'>
               <Typography variant='paragraph-16-medium'>Получатель</Typography>
-              <Button variant='text' onClick={checkIn.functions.goReceiver}>
+              <Button variant='text' onClick={functions.goReceiver}>
                 <IconEdit />
               </Button>
             </div>
@@ -26,13 +26,13 @@ export const CheckIn = () => {
                   ФИО
                 </Typography>
 
-                <Typography variant='paragraph-16'>{checkIn.state.receiverName}</Typography>
+                <Typography variant='paragraph-16'>{state.receiverName}</Typography>
               </div>
               <div className='flex flex-col gap-0.5'>
                 <Typography className='text-tertiary' variant='paragraph-12'>
                   Телефон
                 </Typography>
-                <Typography variant='paragraph-16'>{checkIn.state.receiverPhone}</Typography>
+                <Typography variant='paragraph-16'>{state.receiverPhone}</Typography>
               </div>
             </div>
           </div>
@@ -41,7 +41,7 @@ export const CheckIn = () => {
           <div className='flex w-full flex-col gap-4'>
             <div className='flex items-center justify-start gap-4'>
               <Typography variant='paragraph-16-medium'>Отправитель</Typography>
-              <Button variant='text' onClick={checkIn.functions.goSender}>
+              <Button variant='text' onClick={functions.goSender}>
                 <IconEdit />
               </Button>
             </div>
@@ -51,13 +51,13 @@ export const CheckIn = () => {
                 <Typography className='text-tertiary' variant='paragraph-12'>
                   ФИО
                 </Typography>
-                <Typography variant='paragraph-16'>{checkIn.state.senderName}</Typography>
+                <Typography variant='paragraph-16'>{state.senderName}</Typography>
               </div>
               <div className='flex flex-col gap-0.5'>
                 <Typography className='text-tertiary' variant='paragraph-12'>
                   Телефон
                 </Typography>
-                <Typography variant='paragraph-16'>{checkIn.state.senderPhone}</Typography>
+                <Typography variant='paragraph-16'>{state.senderPhone}</Typography>
               </div>
             </div>
           </div>
@@ -66,7 +66,7 @@ export const CheckIn = () => {
           <div className='flex w-full flex-col gap-4'>
             <div className='flex items-center justify-start gap-4'>
               <Typography variant='paragraph-16-medium'>Откуда забрать</Typography>
-              <Button variant='text' onClick={checkIn.functions.goSenderPoint}>
+              <Button variant='text' onClick={functions.goSenderPoint}>
                 <IconEdit />
               </Button>
             </div>
@@ -76,13 +76,13 @@ export const CheckIn = () => {
                 <Typography className='text-tertiary' variant='paragraph-12'>
                   Адрес
                 </Typography>
-                <Typography variant='paragraph-16'>{checkIn.state.senderAdress}</Typography>
+                <Typography variant='paragraph-16'>{state.senderAdress}</Typography>
               </div>
               <div className='flex flex-col gap-0.5'>
                 <Typography className='text-tertiary' variant='paragraph-12'>
                   Заметка
                 </Typography>
-                <Typography variant='paragraph-16'>{checkIn.state.senderComment}</Typography>
+                <Typography variant='paragraph-16'>{state.senderComment}</Typography>
               </div>
             </div>
           </div>
@@ -91,7 +91,7 @@ export const CheckIn = () => {
           <div className='flex w-full flex-col gap-4'>
             <div className='flex items-center justify-start gap-4'>
               <Typography variant='paragraph-16-medium'>Куда доставить</Typography>
-              <Button variant='text' onClick={checkIn.functions.goReceiverPoint}>
+              <Button variant='text' onClick={functions.goReceiverPoint}>
                 <IconEdit />
               </Button>
             </div>
@@ -101,36 +101,31 @@ export const CheckIn = () => {
                 <Typography className='text-tertiary' variant='paragraph-12'>
                   Адрес
                 </Typography>
-                <Typography variant='paragraph-16'>{checkIn.state.receiverAdress}</Typography>
+                <Typography variant='paragraph-16'>{state.receiverAdress}</Typography>
               </div>
               <div className='flex flex-col gap-0.5'>
                 <Typography className='text-tertiary' variant='paragraph-12'>
                   Заметка
                 </Typography>
-                <Typography variant='paragraph-16'>{checkIn.state.receiverComment}</Typography>
+                <Typography variant='paragraph-16'>{state.receiverComment}</Typography>
               </div>
             </div>
           </div>
         </Card>
         <div className='flex flex-col items-end'>
-          <Typography
-            className='mb-4'
-            variant='title-h3'
-          >{`Итого: ${checkIn.state.price}₽`}</Typography>
+          <Typography className='mb-4' variant='title-h3'>{`Итого: ${state.price}₽`}</Typography>
           <Typography className='text-secondary' variant='paragraph-16'>
             {`Тариф: 
             ${
-              checkIn.state.deliveryType === 'EXPRESS'
-                ? 'Экспресс доставка до двери'
-                : 'Обычная доставка'
+              state.deliveryType === 'EXPRESS' ? 'Экспресс доставка до двери' : 'Обычная доставка'
             }`}
           </Typography>
           <Typography className='text-secondary' variant='paragraph-16'>
             {`Срок:
             ${
-              +checkIn.state.deliveryTime > 1
-                ? `${checkIn.state.deliveryTime} рабочих дней`
-                : `${checkIn.state.deliveryTime} рабочий день`
+              +state.deliveryTime > 1
+                ? `${state.deliveryTime} рабочих дней`
+                : `${state.deliveryTime} рабочий день`
             }`}
           </Typography>
         </div>
@@ -139,7 +134,7 @@ export const CheckIn = () => {
             className='w-full'
             colour='secondary'
             variant='outline'
-            onClick={() => checkIn.functions.goBack()}
+            onClick={() => functions.goBack()}
           >
             Назад
           </Button>
