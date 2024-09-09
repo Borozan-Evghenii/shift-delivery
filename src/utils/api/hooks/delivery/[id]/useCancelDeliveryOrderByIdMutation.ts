@@ -1,8 +1,8 @@
 import { useMutation } from '@tanstack/react-query';
 
-import type { MutationSettings } from '../../../../../@types/api';
-import type { CancelDeliveryOrderById } from '../../requests';
-import { cancelDeliveryOrderById } from '../../requests';
+import type { MutationSettings } from '../../../../../../@types/api';
+import type { CancelDeliveryOrderById } from '../../../requests';
+import { cancelDeliveryOrderById } from '../../../requests';
 
 export const useCancelDeliveryOrderByIdMutation = (
   settings?: MutationSettings<CancelDeliveryOrderById, typeof cancelDeliveryOrderById>

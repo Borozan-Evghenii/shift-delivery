@@ -1,6 +1,7 @@
-import type { RequestConfig } from '../../../../../@types/api';
-import type { BaseResponse, CancelDeliveryOrderDto } from '../../../../../@types/models';
-import { api } from '../../instance';
+import { api } from '@/utils/api/instance';
+
+import type { RequestConfig } from '../../../../../../@types/api';
+import type { BaseResponse, CancelDeliveryOrderDto } from '../../../../../../@types/models';
 
 export type CancelDeliveryOrderById = RequestConfig<CancelDeliveryOrderDto>;
 
