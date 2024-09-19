@@ -6,7 +6,7 @@ import type { Payer } from '../../../../../../@types/models';
 import { usePaymentMethodStage } from './hooks/usePaymentMethodStage';
 
 export const PaymentMethod = () => {
-  const paymentMethod = usePaymentMethodStage();
+  const { state, functions } = usePaymentMethodStage();
 
   return (
     <PageLayout>
@@ -16,7 +16,7 @@ export const PaymentMethod = () => {
           className='flex flex-col gap-3'
           defaultValue='SENDER'
           onValueChange={(data) => {
-            paymentMethod.state.createOrderForm.setValue('payer', data as Payer);
+            state.createOrderForm.setValue('payer', data as Payer);
           }}
         >
           <RadioGroup.Item label='Получатель' value='RECEIVER' />
@@ -27,7 +27,7 @@ export const PaymentMethod = () => {
             className='w-full'
             colour='secondary'
             variant='outline'
-            onClick={() => paymentMethod.functions.goBack()}
+            onClick={() => functions.goBack()}
           >
             Назад
           </Button>
@@ -36,7 +36,7 @@ export const PaymentMethod = () => {
             colour='primary'
             variant='contained'
             onClick={() => {
-              paymentMethod.functions.goToCheckIn();
+              functions.goToCheckIn();
             }}
           >
             Продолжить

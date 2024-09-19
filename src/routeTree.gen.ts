@@ -13,41 +13,47 @@ import { createFileRoute } from '@tanstack/react-router';
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root';
-import { Route as ProfileImport } from './routes/profile';
-import { Route as OrderImport } from './routes/order';
-import { Route as HistoryImport } from './routes/history';
-import { Route as AuthImport } from './routes/auth';
+import { Route as ProfileRouteImport } from './routes/profile/route';
+import { Route as OrderRouteImport } from './routes/order/route';
+import { Route as AuthRouteImport } from './routes/auth/route';
+import { Route as HistoryIndexImport } from './routes/history/index';
+import { Route as HistoryOrderIdImport } from './routes/history/order.$id';
 
 // Create Virtual Routes
 
-const IndexLazyImport = createFileRoute('/')();
+const IndexRouteLazyImport = createFileRoute('/')();
 
 // Create/Update Routes
 
-const ProfileRoute = ProfileImport.update({
+const ProfileRouteRoute = ProfileRouteImport.update({
   path: '/profile',
   getParentRoute: () => rootRoute
-} as any).lazy(() => import('./routes/profile.lazy').then((d) => d.Route));
+} as any).lazy(() => import('./routes/profile/route.lazy').then((d) => d.Route));
 
-const OrderRoute = OrderImport.update({
+const OrderRouteRoute = OrderRouteImport.update({
   path: '/order',
   getParentRoute: () => rootRoute
-} as any).lazy(() => import('./routes/order.lazy').then((d) => d.Route));
+} as any).lazy(() => import('./routes/order/route.lazy').then((d) => d.Route));
 
-const HistoryRoute = HistoryImport.update({
-  path: '/history',
-  getParentRoute: () => rootRoute
-} as any).lazy(() => import('./routes/history.lazy').then((d) => d.Route));
-
-const AuthRoute = AuthImport.update({
+const AuthRouteRoute = AuthRouteImport.update({
   path: '/auth',
   getParentRoute: () => rootRoute
-} as any).lazy(() => import('./routes/auth.lazy').then((d) => d.Route));
+} as any).lazy(() => import('./routes/auth/route.lazy').then((d) => d.Route));
 
-const IndexLazyRoute = IndexLazyImport.update({
+const IndexRouteLazyRoute = IndexRouteLazyImport.update({
   path: '/',
   getParentRoute: () => rootRoute
-} as any).lazy(() => import('./routes/index.lazy').then((d) => d.Route));
+} as any).lazy(() => import('./routes/index/route.lazy').then((d) => d.Route));
+
+const HistoryIndexRoute = HistoryIndexImport.update({
+  path: '/history/',
+  getParentRoute: () => rootRoute
+} as any).lazy(() => import('./routes/history/index.lazy').then((d) => d.Route));
+
+const HistoryOrderIdRoute = HistoryOrderIdImport.update({
+  path: '/history/order/$id',
+  getParentRoute: () => rootRoute
+} as any).lazy(() => import('./routes/history/order.$id.lazy').then((d) => d.Route));
 
 // Populate the FileRoutesByPath interface
 
@@ -57,35 +63,42 @@ declare module '@tanstack/react-router' {
       id: '/';
       path: '/';
       fullPath: '/';
-      preLoaderRoute: typeof IndexLazyImport;
+      preLoaderRoute: typeof IndexRouteLazyImport;
       parentRoute: typeof rootRoute;
     };
     '/auth': {
       id: '/auth';
       path: '/auth';
       fullPath: '/auth';
-      preLoaderRoute: typeof AuthImport;
-      parentRoute: typeof rootRoute;
-    };
-    '/history': {
-      id: '/history';
-      path: '/history';
-      fullPath: '/history';
-      preLoaderRoute: typeof HistoryImport;
+      preLoaderRoute: typeof AuthRouteImport;
       parentRoute: typeof rootRoute;
     };
     '/order': {
       id: '/order';
       path: '/order';
       fullPath: '/order';
-      preLoaderRoute: typeof OrderImport;
+      preLoaderRoute: typeof OrderRouteImport;
       parentRoute: typeof rootRoute;
     };
     '/profile': {
       id: '/profile';
       path: '/profile';
       fullPath: '/profile';
-      preLoaderRoute: typeof ProfileImport;
+      preLoaderRoute: typeof ProfileRouteImport;
+      parentRoute: typeof rootRoute;
+    };
+    '/history/': {
+      id: '/history/';
+      path: '/history';
+      fullPath: '/history';
+      preLoaderRoute: typeof HistoryIndexImport;
+      parentRoute: typeof rootRoute;
+    };
+    '/history/order/$id': {
+      id: '/history/order/$id';
+      path: '/history/order/$id';
+      fullPath: '/history/order/$id';
+      preLoaderRoute: typeof HistoryOrderIdImport;
       parentRoute: typeof rootRoute;
     };
   }
@@ -94,11 +107,12 @@ declare module '@tanstack/react-router' {
 // Create and export the route tree
 
 export const routeTree = rootRoute.addChildren({
-  IndexLazyRoute,
-  AuthRoute,
-  HistoryRoute,
-  OrderRoute,
-  ProfileRoute
+  IndexRouteLazyRoute,
+  AuthRouteRoute,
+  OrderRouteRoute,
+  ProfileRouteRoute,
+  HistoryIndexRoute,
+  HistoryOrderIdRoute
 });
 
 /* prettier-ignore-end */
@@ -107,29 +121,33 @@ export const routeTree = rootRoute.addChildren({
 {
   "routes": {
     "__root__": {
-      "filePath": "__root.tsx",
+      "filePath": "__root.ts",
       "children": [
         "/",
         "/auth",
-        "/history",
         "/order",
-        "/profile"
+        "/profile",
+        "/history/",
+        "/history/order/$id"
       ]
     },
     "/": {
-      "filePath": "index.lazy.tsx"
+      "filePath": "index/route.lazy.ts"
     },
     "/auth": {
-      "filePath": "auth.tsx"
-    },
-    "/history": {
-      "filePath": "history.tsx"
+      "filePath": "auth/route.ts"
     },
     "/order": {
-      "filePath": "order.tsx"
+      "filePath": "order/route.ts"
     },
     "/profile": {
-      "filePath": "profile.tsx"
+      "filePath": "profile/route.ts"
+    },
+    "/history/": {
+      "filePath": "history/index.ts"
+    },
+    "/history/order/$id": {
+      "filePath": "history/order.$id.ts"
     }
   }
 }

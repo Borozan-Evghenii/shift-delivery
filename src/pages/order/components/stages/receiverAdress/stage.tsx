@@ -4,7 +4,7 @@ import { Button, Input, Typography } from '@/components/ui';
 import { useReceiverAdressStage } from './hooks/useReceiverAdressStage';
 
 export const ReceiverAdress = () => {
-  const receiverAddress = useReceiverAdressStage();
+  const { state, functions } = useReceiverAdressStage();
 
   return (
     <PageLayout>
@@ -13,59 +13,47 @@ export const ReceiverAdress = () => {
         <Input
           label='Улица'
           placeholder='Улица'
-          {...receiverAddress.state.createOrderForm.register('receiverAddress.street')}
-          error={!!receiverAddress.state.createOrderForm.formState.errors?.receiverAddress?.street}
-          helpText={
-            receiverAddress.state.createOrderForm.formState.errors?.receiverAddress?.street?.message
-          }
+          {...state.createOrderForm.register('receiverAddress.street')}
+          error={!!state.createOrderForm.formState.errors?.receiverAddress?.street}
+          helpText={state.createOrderForm.formState.errors?.receiverAddress?.street?.message}
         />
         <Input
           label='Номер дома'
           placeholder='Дом'
-          {...receiverAddress.state.createOrderForm.register('receiverAddress.house')}
-          error={!!receiverAddress.state.createOrderForm.formState.errors?.receiverAddress?.house}
-          helpText={
-            receiverAddress.state.createOrderForm.formState.errors?.receiverAddress?.house?.message
-          }
+          {...state.createOrderForm.register('receiverAddress.house')}
+          error={!!state.createOrderForm.formState.errors?.receiverAddress?.house}
+          helpText={state.createOrderForm.formState.errors?.receiverAddress?.house?.message}
         />
         <Input
           label='Номер квартиры'
           placeholder='Квартира'
-          {...receiverAddress.state.createOrderForm.register('receiverAddress.apartment')}
-          error={
-            !!receiverAddress.state.createOrderForm.formState.errors?.receiverAddress?.apartment
-          }
-          helpText={
-            receiverAddress.state.createOrderForm.formState.errors?.receiverAddress?.apartment
-              ?.message
-          }
+          {...state.createOrderForm.register('receiverAddress.apartment')}
+          error={!!state.createOrderForm.formState.errors?.receiverAddress?.apartment}
+          helpText={state.createOrderForm.formState.errors?.receiverAddress?.apartment?.message}
         />
         <Input
           label='Заметка'
           placeholder='Заметка для курьера'
-          {...receiverAddress.state.createOrderForm.register('receiverAddress.comment')}
-          error={!!receiverAddress.state.createOrderForm.formState.errors?.receiverAddress?.comment}
-          helpText={
-            receiverAddress.state.createOrderForm.formState.errors?.receiverAddress?.comment
-              ?.message
-          }
+          {...state.createOrderForm.register('receiverAddress.comment')}
+          error={!!state.createOrderForm.formState.errors?.receiverAddress?.comment}
+          helpText={state.createOrderForm.formState.errors?.receiverAddress?.comment?.message}
         />
         <div className='flex w-[500px] gap-6 p-4'>
           <Button
             className='w-full'
             colour='secondary'
             variant='outline'
-            onClick={() => receiverAddress.functions.goBack()}
+            onClick={() => functions.goBack()}
           >
             Назад
           </Button>
           <Button
             className='w-full'
             colour='primary'
-            disabled={!receiverAddress.state.isStageValid()}
+            disabled={!state.isStageValid()}
             variant='contained'
             onClick={() => {
-              receiverAddress.functions.goToPaymentMethod();
+              functions.goToPaymentMethod();
             }}
           >
             Продолжить

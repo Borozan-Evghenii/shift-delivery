@@ -3,5 +3,6 @@ export const ROUTE = {
   HISTORY: '/history',
   PROFILE: '/profile',
   AUTH: '/auth',
-  ORDER: '/order'
+  ORDER: '/order',
+  HISTORY_ORDER_ID: '/history/order/$id'
 } as const;

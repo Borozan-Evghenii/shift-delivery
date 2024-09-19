@@ -1,22 +1,11 @@
 import * as zod from 'zod';
 
+import { zodRules } from '@/utils/constants/validation';
+
 export const calcDeliverySchema = zod.object({
-  package: zod.object({
-    height: zod.number().min(1),
-    length: zod.number().min(1),
-    weight: zod.number().min(1),
-    width: zod.number().min(1)
-  }),
-  senderPoint: zod.object({
-    id: zod.string(),
-    name: zod.string(),
-    latitude: zod.number(),
-    longitude: zod.number()
-  }),
-  receiverPoint: zod.object({
-    id: zod.string(),
-    name: zod.string(),
-    latitude: zod.number(),
-    longitude: zod.number()
-  })
+  package: zodRules.deliveryPackage,
+  senderPoint: zodRules.deliveryPoint,
+  receiverPoint: zodRules.deliveryPoint
 });
+
+export type CalcDeliveryType = zod.infer<typeof calcDeliverySchema>;

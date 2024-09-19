@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 
-import type { QuerySettings } from '../../../../../@types/api';
-import { getDeliveryOrderById } from '../../requests';
+import type { QuerySettings } from '../../../../../../@types/api';
+import { getDeliveryOrderById } from '../../../requests';
 
 export const useGetDeliveryOrderByIdQuery = (
   data: { id: string },

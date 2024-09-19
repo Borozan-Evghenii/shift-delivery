@@ -49,7 +49,6 @@ export const useIndexPage = () => {
   const onSubmit = (data: CalcDeliverySchemaType) => {
     navigate({
       to: ROUTE.ORDER,
-
       search: {
         package: { ...data.package },
         senderPoint: { ...data.senderPoint },
@@ -59,8 +58,7 @@ export const useIndexPage = () => {
   };
 
   return {
-    state: { deliveryPoints, packageType },
-    functions: { onSubmit, setPointCoordonates, setPackageType },
-    form: { calculateForm }
+    state: { deliveryPoints, packageType, calculateForm },
+    functions: { onSubmit, setPointCoordonates, setPackageType }
   };
 };

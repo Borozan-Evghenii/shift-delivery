@@ -1,5 +1,8 @@
+import { redirect } from '@tanstack/react-router';
+
 import succes from '@/assets/images/success.png';
 import { Button, Modal, Typography } from '@/components/ui';
+import { ROUTE } from '@/utils/constants';
 
 import type { Stage } from '../../context/stage';
 import { CheckIn, PaymentMethod, Receiver, ReceiverAdress, Sender, SenderAdress } from '../stages';
@@ -18,13 +21,18 @@ const component: Record<Stage, React.ReactNode> = {
 };
 
 export const StageContainer = () => {
-  const stageContainer = useStageContainer();
+  const { state, functions } = useStageContainer();
 
   return (
     <>
       <Modal
-        open={stageContainer.state.modal.open}
-        onClose={() => stageContainer.state.modal.setOpen(false)}
+        open={state.modal.open}
+        onClose={() => {
+          state.modal.setOpen(false);
+          redirect({
+            to: ROUTE.HISTORY
+          });
+        }}
       >
         <div className='flex max-w-[400px] flex-col items-center gap-10 text-center'>
           <div className='flex flex-col items-center gap-4'>
@@ -35,17 +43,20 @@ export const StageContainer = () => {
             </Typography>
           </div>
 
-          <Button>Посмотреть статус</Button>
+          <Button
+            onClick={() =>
+              redirect({
+                to: ROUTE.HISTORY
+              })
+            }
+          >
+            Посмотреть статус
+          </Button>
         </div>
       </Modal>
 
-      <form
-        className='w-full'
-        onSubmit={stageContainer.state.createOrderForm.handleSubmit(
-          stageContainer.functions.onSubmit
-        )}
-      >
-        {component[stageContainer.state.stage]}
+      <form className='w-full' onSubmit={state.createOrderForm.handleSubmit(functions.onSubmit)}>
+        {component[state.stage]}
       </form>
     </>
   );

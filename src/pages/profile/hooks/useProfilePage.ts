@@ -14,7 +14,9 @@ export const useProfilePage = () => {
   const user = useGetUsersSessionQuery({ options: { gcTime: 0 } });
   const userMutate = useUpdateUserProfileMutation();
   const city = useGetDeliveryPoints();
-  const form = useForm<User>({ values: user.data?.data.user });
+  const form = useForm<User>({
+    values: user.data?.data.user
+  });
   const toast = React.useRef<ToastRefProps>(null);
 
   const onSubmit = form.handleSubmit(
