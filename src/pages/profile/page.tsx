@@ -26,7 +26,7 @@ export const ProfilePage = () => {
         <Input label='Имя' placeholder='Имя' {...state.form.register('lastname')} />
         <Input label='Email' placeholder='Email' {...state.form.register('email')} />
         <Input label='Отчество' placeholder='Отчество' {...state.form.register('middlename')} />
-        {state.form.getValues('city') && (
+        {state.form.formState.defaultValues && (
           <div className='flex flex-col gap-1'>
             <Select.Root
               defaultValue={state.form.getValues('city')}

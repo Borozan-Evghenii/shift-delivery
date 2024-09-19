@@ -3,7 +3,7 @@ import React from 'react';
 
 import { IconClose } from '@/components/icons/svg';
 
-type PublishMethodProps = { title: string; description: string };
+type PublishMethodProps = { title: string; description: string; link?: string };
 
 export interface ToastRefProps extends React.ComponentPropsWithRef<typeof ToastPrimitive.Root> {
   publish: (props: PublishMethodProps) => void;
@@ -14,14 +14,16 @@ export const ToastItem = React.forwardRef<
   React.ComponentPropsWithoutRef<typeof ToastPrimitive.Root>
 >(({ children, ...toastProps }, ref) => {
   const [open, setOpen] = React.useState(false);
-  const [title, setTitle] = React.useState('');
-  const [description, setDescription] = React.useState('');
+  const [content, setContent] = React.useState<PublishMethodProps>({
+    title: '',
+    description: '',
+    link: ''
+  });
 
   React.useImperativeHandle(ref, () => ({
     publish: (props: PublishMethodProps) => {
       setOpen(true);
-      setTitle(props.title);
-      setDescription(props.description);
+      setContent({ ...props });
     }
   }));
 
@@ -34,15 +36,18 @@ export const ToastItem = React.forwardRef<
     >
       <div className='flex justify-between'>
         <ToastPrimitive.Title asChild>
-          <p className='paragraph-16-medium'>{title}</p>
+          <p className='paragraph-16-medium'>{content.title}</p>
         </ToastPrimitive.Title>
         <ToastPrimitive.Close>
           <IconClose />
         </ToastPrimitive.Close>
       </div>
 
-      <ToastPrimitive.Description asChild>
-        <p className='paragraph-14'>{description}</p>
+      <ToastPrimitive.Description>
+        <p className='paragraph-14'>{content.description}</p>
+        <a href={content.link} rel='noreferrer' target='_blank'>
+          {content.link}
+        </a>
       </ToastPrimitive.Description>
     </ToastPrimitive.Root>
   );

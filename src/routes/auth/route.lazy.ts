@@ -4,6 +4,6 @@ import { AuthLoading, AuthPage } from '@/pages/auth';
 import { ROUTE } from '@/utils/constants';
 
 export const Route = createLazyFileRoute(ROUTE.AUTH)({
-  component: () => <AuthPage />,
-  pendingComponent: () => <AuthLoading />
+  component: AuthPage,
+  pendingComponent: AuthLoading
 });

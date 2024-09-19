@@ -99,7 +99,9 @@ export const IndexPage = () => {
                     <Tab.Content value={TAB.APROXIMATE}>
                       {state.packageType.data?.data.packages.map((pack) => (
                         <Select.Item key={pack.id} value={pack.id}>
-                          <Typography variant='paragraph-16'>{`${pack.name}, ${pack.height} cm x ${pack.weight} cm x ${pack.length} cm `}</Typography>
+                          <Typography variant='paragraph-16'>
+                            {`${pack.name}, ${pack.height} cm x ${pack.weight} cm x ${pack.length} cm `}
+                          </Typography>
                         </Select.Item>
                       ))}
                     </Tab.Content>

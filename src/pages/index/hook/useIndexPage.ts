@@ -49,7 +49,6 @@ export const useIndexPage = () => {
   const onSubmit = (data: CalcDeliverySchemaType) => {
     navigate({
       to: ROUTE.ORDER,
-
       search: {
         package: { ...data.package },
         senderPoint: { ...data.senderPoint },

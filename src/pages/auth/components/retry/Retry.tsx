@@ -8,7 +8,7 @@ interface RetryProps {
 }
 
 export const Retry = ({ retryDelay, children }: RetryProps) => {
-  const [time, setTime] = React.useState(retryDelay / 1000);
+  const [time, setTime] = React.useState(Math.floor(retryDelay / 1000));
 
   React.useEffect(() => {
     const interval = setInterval(() => {

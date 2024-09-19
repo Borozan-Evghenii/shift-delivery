@@ -1,5 +1,8 @@
+import { redirect } from '@tanstack/react-router';
+
 import succes from '@/assets/images/success.png';
 import { Button, Modal, Typography } from '@/components/ui';
+import { ROUTE } from '@/utils/constants';
 
 import type { Stage } from '../../context/stage';
 import { CheckIn, PaymentMethod, Receiver, ReceiverAdress, Sender, SenderAdress } from '../stages';
@@ -22,7 +25,15 @@ export const StageContainer = () => {
 
   return (
     <>
-      <Modal open={state.modal.open} onClose={() => state.modal.setOpen(false)}>
+      <Modal
+        open={state.modal.open}
+        onClose={() => {
+          state.modal.setOpen(false);
+          redirect({
+            to: ROUTE.HISTORY
+          });
+        }}
+      >
         <div className='flex max-w-[400px] flex-col items-center gap-10 text-center'>
           <div className='flex flex-col items-center gap-4'>
             <img alt='succes' className='h-[60px] w-[60px]' src={succes} />
@@ -32,7 +43,15 @@ export const StageContainer = () => {
             </Typography>
           </div>
 
-          <Button>Посмотреть статус</Button>
+          <Button
+            onClick={() =>
+              redirect({
+                to: ROUTE.HISTORY
+              })
+            }
+          >
+            Посмотреть статус
+          </Button>
         </div>
       </Modal>
 
