@@ -1,7 +1,8 @@
 import * as zod from 'zod';
 
+import { zodRules } from '@/utils/constants/validation';
+
 import {
-  optionsSchema,
   receiverAdressSchema,
   receiverSchema,
   senderAdressSchema,
@@ -9,20 +10,10 @@ import {
 } from './orderSchemas';
 
 export const createOrderFormSchema = zod.object({
-  option: optionsSchema,
-  senderPoint: zod.object({
-    id: zod.string(),
-    longitude: zod.number(),
-    latitude: zod.number(),
-    name: zod.string()
-  }),
+  option: zodRules.deliveryOptions,
+  senderPoint: zodRules.deliveryPoint,
   sender: senderSchema,
-  receiverPoint: zod.object({
-    id: zod.string(),
-    longitude: zod.number(),
-    latitude: zod.number(),
-    name: zod.string()
-  }),
+  receiverPoint: zodRules.deliveryPoint,
   receiver: receiverSchema,
   senderAddress: senderAdressSchema,
   receiverAddress: receiverAdressSchema,
