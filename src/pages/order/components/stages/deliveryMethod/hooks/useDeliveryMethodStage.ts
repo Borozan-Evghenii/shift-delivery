@@ -21,7 +21,8 @@ export const useDeliveryMethodStage = () => {
 
   const goToSender = (option: DeliveryOption) => {
     createOrderForm.setValue('option', { ...option });
-    createOrderForm.setValue('senderPoint', data.senderPoint);
+
+    createOrderForm.setValue('senderPoint', data?.senderPoint);
     createOrderForm.setValue('receiverPoint', data?.receiverPoint);
 
     stage.setStage('receiver');
