@@ -1,3 +1,4 @@
+import { zodResolver } from '@hookform/resolvers/zod';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 
@@ -9,13 +10,16 @@ import {
 } from '@/utils/api';
 
 import type { User } from '../../../../@types/models';
+import { profileSchema, type ProfileSchema } from '../constants/schema';
 
 export const useProfilePage = () => {
   const user = useGetUsersSessionQuery({ options: { gcTime: 0 } });
   const userMutate = useUpdateUserProfileMutation();
   const city = useGetDeliveryPoints();
-  const form = useForm<User>({
-    values: user.data?.data.user
+  const form = useForm<ProfileSchema>({
+    resolver: zodResolver(profileSchema),
+    values: user.data?.data.user,
+    mode: 'onChange'
   });
   const toast = React.useRef<ToastRefProps>(null);
 
@@ -25,11 +29,11 @@ export const useProfilePage = () => {
         {
           params: {
             profile: {
-              firstname: data.firstname!,
-              lastname: data.lastname!,
+              firstname: data.firstname,
+              lastname: data.lastname,
               middlename: data.middlename!,
-              city: data.city!,
-              email: data.email!
+              city: data.city,
+              email: data.email
             },
             phone: data.phone
           }

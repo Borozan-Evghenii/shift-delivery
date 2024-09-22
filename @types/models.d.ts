@@ -1,16 +1,11 @@
+import type { ProfileSchema } from '@/pages/profile/constants/schema';
+
 type BaseResponse = {
   succes: boolean;
   reasone?: string;
 };
 
-type User = {
-  phone: string;
-  firstname?: string;
-  middlename?: string;
-  lastname?: string;
-  email?: string;
-  city?: string;
-};
+type User = ProfileSchema;
 
 // Delivery
 type Payer = 'SENDER' | 'RECEIVER';

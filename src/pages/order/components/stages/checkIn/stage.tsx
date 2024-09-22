@@ -26,13 +26,13 @@ export const CheckIn = () => {
                   ФИО
                 </Typography>
 
-                <Typography variant='paragraph-16'>{state.receiverName}</Typography>
+                <Typography variant='paragraph-16'>{state.order.receiver.name}</Typography>
               </div>
               <div className='flex flex-col gap-0.5'>
                 <Typography className='text-tertiary' variant='paragraph-12'>
                   Телефон
                 </Typography>
-                <Typography variant='paragraph-16'>{state.receiverPhone}</Typography>
+                <Typography variant='paragraph-16'>{state.order.receiver.phone}</Typography>
               </div>
             </div>
           </div>
@@ -51,13 +51,13 @@ export const CheckIn = () => {
                 <Typography className='text-tertiary' variant='paragraph-12'>
                   ФИО
                 </Typography>
-                <Typography variant='paragraph-16'>{state.senderName}</Typography>
+                <Typography variant='paragraph-16'>{state.order.sender.name}</Typography>
               </div>
               <div className='flex flex-col gap-0.5'>
                 <Typography className='text-tertiary' variant='paragraph-12'>
                   Телефон
                 </Typography>
-                <Typography variant='paragraph-16'>{state.senderPhone}</Typography>
+                <Typography variant='paragraph-16'>{state.order.sender.phone}</Typography>
               </div>
             </div>
           </div>
@@ -76,13 +76,13 @@ export const CheckIn = () => {
                 <Typography className='text-tertiary' variant='paragraph-12'>
                   Адрес
                 </Typography>
-                <Typography variant='paragraph-16'>{state.senderAdress}</Typography>
+                <Typography variant='paragraph-16'>{state.order.sender.adress}</Typography>
               </div>
               <div className='flex flex-col gap-0.5'>
                 <Typography className='text-tertiary' variant='paragraph-12'>
                   Заметка
                 </Typography>
-                <Typography variant='paragraph-16'>{state.senderComment}</Typography>
+                <Typography variant='paragraph-16'>{state.order.sender.comment}</Typography>
               </div>
             </div>
           </div>
@@ -101,31 +101,36 @@ export const CheckIn = () => {
                 <Typography className='text-tertiary' variant='paragraph-12'>
                   Адрес
                 </Typography>
-                <Typography variant='paragraph-16'>{state.receiverAdress}</Typography>
+                <Typography variant='paragraph-16'>{state.order.receiver.adress}</Typography>
               </div>
               <div className='flex flex-col gap-0.5'>
                 <Typography className='text-tertiary' variant='paragraph-12'>
                   Заметка
                 </Typography>
-                <Typography variant='paragraph-16'>{state.receiverComment}</Typography>
+                <Typography variant='paragraph-16'>{state.order.receiver.comment}</Typography>
               </div>
             </div>
           </div>
         </Card>
         <div className='flex flex-col items-end'>
-          <Typography className='mb-4' variant='title-h3'>{`Итого: ${state.price}₽`}</Typography>
+          <Typography
+            className='mb-4'
+            variant='title-h3'
+          >{`Итого: ${state.order.price}₽`}</Typography>
           <Typography className='text-secondary' variant='paragraph-16'>
             {`Тариф: 
             ${
-              state.deliveryType === 'EXPRESS' ? 'Экспресс доставка до двери' : 'Обычная доставка'
+              state.order.delivery.type === 'EXPRESS'
+                ? 'Экспресс доставка до двери'
+                : 'Обычная доставка'
             }`}
           </Typography>
           <Typography className='text-secondary' variant='paragraph-16'>
             {`Срок:
             ${
-              +state.deliveryTime > 1
-                ? `${state.deliveryTime} рабочих дней`
-                : `${state.deliveryTime} рабочий день`
+              +state.order.delivery.time > 1
+                ? `${state.order.delivery.time} рабочих дней`
+                : `${state.order.delivery.time} рабочий день`
             }`}
           </Typography>
         </div>

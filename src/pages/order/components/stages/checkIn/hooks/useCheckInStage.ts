@@ -7,17 +7,25 @@ export const useCheckInStage = () => {
   const createOrderForm = useCreateOrderFormContext();
   const stage = useStage();
 
-  const receiverName = `${createOrderForm.getValues('receiver.firstname')} ${createOrderForm.getValues('receiver.middlename')} ${createOrderForm.getValues('receiver.lastname')}`;
-  const senderName = `${createOrderForm.getValues('sender.firstname')} ${createOrderForm.getValues('sender.middlename')} ${createOrderForm.getValues('sender.lastname')}`;
-  const receiverPhone = `${createOrderForm.getValues('receiver.phone')}`;
-  const senderPhone = `${createOrderForm.getValues('sender.phone')} `;
-  const senderComment = `${createOrderForm.getValues('senderAddress.comment')} `;
-  const price = `${beautifyPrice(createOrderForm.getValues('option.price'))} `;
-  const deliveryType = `${createOrderForm.getValues('option.type')} `;
-  const deliveryTime = `${createOrderForm.getValues('option.days')} `;
-  const receiverComment = `${createOrderForm.getValues('receiverAddress.comment')} `;
-  const senderAdress = `ул. ${createOrderForm.getValues('senderAddress.street')} д. ${createOrderForm.getValues('senderAddress.house')}`;
-  const receiverAdress = `ул. ${createOrderForm.getValues('receiverAddress.street')} д. ${createOrderForm.getValues('receiverAddress.house')}`;
+  const order = {
+    delivery: {
+      type: `${createOrderForm.getValues('option.type')} `,
+      time: `${createOrderForm.getValues('option.days')} `
+    },
+    price: `${beautifyPrice(createOrderForm.getValues('option.price'))} `,
+    sender: {
+      adress: `ул. ${createOrderForm.getValues('senderAddress.street')} д. ${createOrderForm.getValues('senderAddress.house')}`,
+      comment: `${createOrderForm.getValues('senderAddress.comment')} `,
+      phone: `${createOrderForm.getValues('sender.phone')} `,
+      name: `${createOrderForm.getValues('sender.firstname')} ${createOrderForm.getValues('sender.middlename')} ${createOrderForm.getValues('sender.lastname')}`
+    },
+    receiver: {
+      name: `${createOrderForm.getValues('receiver.firstname')} ${createOrderForm.getValues('receiver.middlename')} ${createOrderForm.getValues('receiver.lastname')}`,
+      adress: `ул. ${createOrderForm.getValues('receiverAddress.street')} д. ${createOrderForm.getValues('receiverAddress.house')}`,
+      comment: `${createOrderForm.getValues('receiverAddress.comment')} `,
+      phone: `${createOrderForm.getValues('receiver.phone')}`
+    }
+  };
 
   const goBack = () => {
     stage.setStage('paymentMethod');
@@ -38,18 +46,7 @@ export const useCheckInStage = () => {
 
   return {
     state: {
-      createOrderForm,
-      receiverAdress,
-      receiverComment,
-      receiverName,
-      receiverPhone,
-      senderName,
-      senderPhone,
-      senderComment,
-      price,
-      deliveryType,
-      deliveryTime,
-      senderAdress
+      order
     },
     functions: { goBack, goReceiver, goSender, goSenderPoint, goReceiverPoint }
   };
