@@ -21,7 +21,7 @@ export const IndexPage = () => {
         <div className='justify-cente flex w-full items-center'>
           <form
             className='flex w-[500px] max-w-[500px] flex-col gap-6 rounded-3xl bg-white px-16 py-8'
-            onSubmit={state.calculateForm.handleSubmit(functions.onSubmit)}
+            onSubmit={state.form.handleSubmit(functions.onSubmit)}
           >
             <div>
               <Typography className='text-primary' variant='title-h2'>
@@ -46,9 +46,9 @@ export const IndexPage = () => {
                   ))}
                 </Select.Content>
               </Select.Root>
-              {state.calculateForm.formState.errors.senderPoint?.message && (
+              {state.form.formState.errors.senderPoint?.message && (
                 <p className='text-sm text-error'>
-                  {state.calculateForm.formState.errors.senderPoint?.message}
+                  {state.form.formState.errors.senderPoint?.message}
                 </p>
               )}
             </div>
@@ -71,9 +71,9 @@ export const IndexPage = () => {
                   ))}
                 </Select.Content>
               </Select.Root>
-              {state.calculateForm.formState.errors.receiverPoint?.message && (
+              {state.form.formState.errors.receiverPoint?.message && (
                 <p className='text-sm text-error'>
-                  {state.calculateForm.formState.errors.receiverPoint?.message}
+                  {state.form.formState.errors.receiverPoint?.message}
                 </p>
               )}
             </div>
@@ -112,7 +112,7 @@ export const IndexPage = () => {
                           <Input
                             placeholder='cm'
                             type='number'
-                            {...state.calculateForm.register('package.length', {
+                            {...state.form.register('package.length', {
                               required: { value: true, message: 'is rewuired' }
                             })}
                           />
@@ -122,7 +122,7 @@ export const IndexPage = () => {
                           <Input
                             placeholder='cm'
                             type='number'
-                            {...state.calculateForm.register('package.width', {
+                            {...state.form.register('package.width', {
                               required: { value: true, message: 'is rewuired' }
                             })}
                           />
@@ -132,7 +132,7 @@ export const IndexPage = () => {
                           <Input
                             placeholder='cm'
                             type='number'
-                            {...state.calculateForm.register('package.height', {
+                            {...state.form.register('package.height', {
                               required: { value: true, message: 'is rewuired' }
                             })}
                           />
@@ -142,7 +142,7 @@ export const IndexPage = () => {
                           <Input
                             placeholder='кг'
                             type='number'
-                            {...state.calculateForm.register('package.weight', {
+                            {...state.form.register('package.weight', {
                               required: { value: true, message: 'is rewuired' }
                             })}
                           />
@@ -152,10 +152,8 @@ export const IndexPage = () => {
                   </Tab.Root>
                 </Select.Content>
               </Select.Root>
-              {state.calculateForm.formState.errors?.package?.message && (
-                <p className='text-sm text-error'>
-                  {state.calculateForm.formState.errors.package?.message}
-                </p>
+              {state.form.formState.errors?.package?.message && (
+                <p className='text-sm text-error'>{state.form.formState.errors.package?.message}</p>
               )}
             </div>
             <Button type='submit'>Рассчитать</Button>

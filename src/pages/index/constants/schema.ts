@@ -8,4 +8,4 @@ export const calcDeliverySchema = zod.object({
   receiverPoint: zodRules.deliveryPoint
 });
 
-export type CalcDeliveryType = zod.infer<typeof calcDeliverySchema>;
+export type CalcDeliverySchemaType = zod.infer<typeof calcDeliverySchema>;

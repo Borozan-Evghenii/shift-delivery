@@ -1,22 +1,20 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useNavigate } from '@tanstack/react-router';
 import { useForm } from 'react-hook-form';
-import type * as z from 'zod';
 
 import { useGetDeliveryPoints } from '@/utils/api';
 import { useGetDeliveryPackageTypesQuery } from '@/utils/api/hooks/delivery/useGetDeliveryPackageTypesQuery';
 import { ROUTE } from '@/utils/constants';
 
+import type { CalcDeliverySchemaType } from '../constants/schema';
 import { calcDeliverySchema } from '../constants/schema';
-
-type CalcDeliverySchemaType = z.infer<typeof calcDeliverySchema>;
 
 export const useIndexPage = () => {
   const deliveryPoints = useGetDeliveryPoints();
   const packageType = useGetDeliveryPackageTypesQuery();
   const navigate = useNavigate();
 
-  const calculateForm = useForm<CalcDeliverySchemaType>({
+  const form = useForm<CalcDeliverySchemaType>({
     resolver: zodResolver(calcDeliverySchema)
   });
 
@@ -25,7 +23,7 @@ export const useIndexPage = () => {
     deliveryPointId: string
   ) => {
     const point = deliveryPoints.data?.data.points.filter((point) => point.id === deliveryPointId);
-    calculateForm.setValue(fieldName, {
+    form.setValue(fieldName, {
       id: point![0].id,
       name: point![0].name,
       latitude: point![0].latitude,
@@ -38,7 +36,7 @@ export const useIndexPage = () => {
       (packageItem) => packageItem.id === packageId
     );
 
-    calculateForm.setValue(fieldName, {
+    form.setValue(fieldName, {
       width: pack![0].width,
       weight: pack![0].weight,
       height: pack![0].height,
@@ -58,7 +56,7 @@ export const useIndexPage = () => {
   };
 
   return {
-    state: { deliveryPoints, packageType, calculateForm },
+    state: { deliveryPoints, packageType, form },
     functions: { onSubmit, setPointCoordonates, setPackageType }
   };
 };
