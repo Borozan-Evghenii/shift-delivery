@@ -7,7 +7,7 @@ import { AuthProvider } from './session';
 export interface ProvidersProps {
   children: React.ReactNode;
   query: Omit<QueryProviderProps, 'children'>;
-  toast: Omit<typeof Toast.Provider, 'children'>;
+  toast?: Omit<typeof Toast.Provider, 'children'>;
 }
 
 export const Provider = ({ children, query, toast }: ProvidersProps) => (

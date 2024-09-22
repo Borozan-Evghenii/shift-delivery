@@ -8,7 +8,7 @@ import { Card } from './Card';
 const meta: Meta<typeof Card> = {
   title: 'Components / UI / Card',
   decorators: [
-    (Story, { props }) => (
+    (_, { props }) => (
       <div className='flex w-[700px] items-center justify-center'>
         <Card {...props}>
           <div className='flex w-full flex-col gap-4'>

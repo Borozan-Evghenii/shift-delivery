@@ -35,7 +35,6 @@ export const Header = () => {
                   <Link
                     activeProps={{ className: 'text-brand' }}
                     className='paragraph-16-medium flex gap-2 text-secondary hover:text-brand'
-                    params={{ id: '' }}
                     to={ROUTE.HISTORY}
                   >
                     <IconHistory />

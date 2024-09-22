@@ -51,6 +51,13 @@ export const useIndexPage = () => {
         package: { ...data.package },
         senderPoint: { ...data.senderPoint },
         receiverPoint: { ...data.receiverPoint }
+      },
+      mask: {
+        search: {
+          package: undefined,
+          senderPoint: undefined,
+          receiverPoint: undefined
+        }
       }
     }).catch(() => {});
   };

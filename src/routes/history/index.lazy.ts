@@ -1,9 +1,8 @@
 import { createLazyFileRoute } from '@tanstack/react-router';
 
 import { HistoryLoading, HistoryPage } from '@/pages/history';
-import { ROUTE } from '@/utils/constants';
 
-export const Route = createLazyFileRoute(ROUTE.HISTORY)({
+export const Route = createLazyFileRoute('/history/')({
   component: HistoryPage,
   pendingComponent: HistoryLoading
 });
