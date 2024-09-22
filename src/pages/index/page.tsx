@@ -2,6 +2,7 @@ import { IconLocation, IconNavigate, IconPackage } from '@/components/icons/svg'
 import { Button, Input, Select, Tab, Typography } from '@/components/ui';
 
 import airplane from '../../assets/images/airplane.png';
+import bg from '../../assets/images/homePageBackground.jpg';
 
 import { TAB } from './constants/tab';
 import { useIndexPage } from './hook/useIndexPage';
@@ -10,7 +11,10 @@ export const IndexPage = () => {
   const { state, functions } = useIndexPage();
 
   return (
-    <div className='h-[100vh] w-full bg-hero bg-cover bg-no-repeat'>
+    <div
+      className='h-[100vh] w-full bg-cover bg-no-repeat'
+      style={{ backgroundImage: `url(${bg})` }}
+    >
       <div className='container grid h-full grid-cols-2 items-center gap-5'>
         <div className='flex h-[100%] flex-col justify-center gap-12'>
           <img alt='airplane' src={airplane} />
