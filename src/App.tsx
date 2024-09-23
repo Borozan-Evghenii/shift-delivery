@@ -2,10 +2,12 @@ import { createRouter, RouterProvider } from '@tanstack/react-router';
 
 import { useAuthContext } from '@/utils/contexts/session';
 
+import { NotFoundPage } from './pages/notFound';
 import { routeTree } from './routeTree.gen';
 
 const router = createRouter({
   routeTree,
+  defaultNotFoundComponent: NotFoundPage,
   context: {
     isAuthenticated: true
   }

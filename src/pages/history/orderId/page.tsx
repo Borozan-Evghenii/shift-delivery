@@ -1,5 +1,5 @@
 import { PageLayout } from '@/components/layout';
-import { Button, Card, Typography } from '@/components/ui';
+import { Button, Card, Toast, Typography } from '@/components/ui';
 
 import { useOrderByIdPage } from './hooks/userOrderById';
 
@@ -90,6 +90,7 @@ export const OrderById = () => {
           <Button onClick={functions.closePage}>Закрыть</Button>
         </div>
       </div>
+      <Toast.Item ref={state.toast} />
     </PageLayout>
   );
 };

@@ -1,5 +1,7 @@
 import { useNavigate, useParams } from '@tanstack/react-router';
+import { useRef } from 'react';
 
+import type { ToastRefProps } from '@/components/ui';
 import { useCancelDeliveryOrderByIdMutation, useGetDeliveryOrderByIdQuery } from '@/utils/api';
 import { ROUTE } from '@/utils/constants';
 
@@ -8,6 +10,14 @@ export const useOrderByIdPage = () => {
   const order = useGetDeliveryOrderByIdQuery({ id });
   const cancel = useCancelDeliveryOrderByIdMutation();
   const navigate = useNavigate();
+  const toast = useRef<ToastRefProps>(null);
+
+  if (order.isError) {
+    toast.current?.publish({
+      title: 'Order not found ',
+      description: `Order is not found in database `
+    });
+  }
 
   const orderData = {
     receiver: {
@@ -29,15 +39,32 @@ export const useOrderByIdPage = () => {
     cancelable: order.data?.data.order.cancellable
   };
 
-  const cancelOrder = () => cancel.mutate({ params: { orderId: id } });
+  const cancelOrder = () =>
+    cancel.mutate(
+      { params: { orderId: id } },
+      {
+        onSuccess: () => {
+          toast.current?.publish({
+            title: `Order ${id} is canceled `,
+            description: `Order canceled `
+          });
+          navigate({
+            to: ROUTE.HISTORY
+          }).catch(() => {});
+        },
+        onError: () => {
+          toast.current?.publish({
+            title: `Order can't be canceled `,
+            description: `Order can't be canceled `
+          });
+        }
+      }
+    );
 
   const closePage = () =>
     navigate({
-      to: ROUTE.HISTORY,
-      params: {
-        id: ''
-      }
+      to: ROUTE.HISTORY
     });
 
-  return { state: { orderData }, functions: { cancelOrder, closePage } };
+  return { state: { orderData, toast }, functions: { cancelOrder, closePage } };
 };
